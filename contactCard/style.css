@@ -1,0 +1,37 @@
+/*CSS reset*/
+*{
+  margin: 0px;
+  padding: 0px;
+}
+#add_contact{
+  display: inline-block;
+  padding: 10px;
+  height: 400px;
+  width:400px;
+}
+#added_users{
+  vertical-align: top;
+  display:inline-block;
+}
+  #added_users:div{
+    align: right;
+  }
+.users{
+  border: 1px solid black;
+  text-align: center;
+  width: 150px;
+  margin: 10px 0;
+}
+
+#description_box{
+  vertical-align: top;
+  margin-top: 10px;
+  height: 150px;
+  width: 200px;
+}
+span{
+  visibility: hidden;
+}
+input{
+  margin-top: 4px;
+}
