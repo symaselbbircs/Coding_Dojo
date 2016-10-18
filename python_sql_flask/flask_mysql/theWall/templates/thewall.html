@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The Wall</title>
+    <link rel='stylesheet' type='text/css' href="{{url_for('static',filename='thewall_style.css')}}">
+  </head>
+  <body>
+    <div id="header">
+      <h2>CodingDojo Wall</h2><h4>Welcome {{ session['name'] }}</h4><form action="/logout" method="GET" class="inline">
+      <button type="submit" class="link-button">
+        Log Out
+      </button>
+    </form>
+    </div>
+    <div id="body">
+        <h4>Post a Message</h4>
+        <textarea id="message_box" type="textarea" name="message" form="submitmessage"></textarea>
+        <form id="submitmessage" action="/message" method="POST">
+        <input id="button_message" type="submit" value="Post A Message">
+      </form>
+      <div id="message_board">
+        {% if data: %}
+          {% for message in data %}
+            <div>
+              <h4>{{ data[message]["name"] }} - {{ data[message]["date"] }}</h4><br>
+              <div class="message">
+                <p>{{ data[message]["message"] }}</p>
+              </div>
+              {% for comment in data[message]["comments"] %}
+                <div class="comment">
+                <h4>{{ comment["name"]}} - {{ comment["date"] }}</h4><br>
+                <div class="comment_content">
+                  <p>{{ comment["comment"] }}</p>
+                </div>
+              </div>
+              {% endfor %}
+              <div class="comment">
+                <h4>Post a comment</h4>
+                <textarea class="comment_box" name="comment" type="textarea" form="{{message}}"></textarea>
+                <form id="{{message}}" class="submitcomment" action="/comment/{{ message }}" method="POST">
+                <input class="button_comment" type="submit" value="Post A Comment">
+                </form>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

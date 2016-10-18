@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Pacman</title>
+    <meta name="description" content="A space to play pacman!">
+    <link rel="stylesheet" type="text/css" href="style.css"
+    <link rel="stylesheet" type="text/css" href="css_2.css">
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+    <script type="text/javascript">
+
+    var coin_options = ['coin.gif', 'star.gif']
+    var pacman_options = ['mario', 'pacman']
+    var bonus_cooldown = 45 //bonus happens every other minute
+    var dir = "down" //default direction
+    var score = 0 //in pts
+    var time = 0 //in seconds
+    var delay = 1000;
+    var theme_choice = Math.ceil((Math.random()*coin_options.length) - 1)
+    var cherry_time = Math.ceil(Math.random()*60)
+    var pacman_img_path = "img/" + pacman_options[theme_choice] + ".gif"
+    var coin_img_path = "img/" + coin_options[theme_choice]
+    var class_scheme = {0:"blank",1:"wall",2:"coin",3:"pacman",4:"cherry",5:"ghost"}
+    var coins_on_board = 0
+    var won = false
+    var lose = false
+    var board = [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                 [1,3,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+                 [1,2,1,2,1,1,2,1,2,1,2,1,1,2,1,2,1,1,2,1],
+                 [1,2,1,2,1,1,2,1,2,1,2,1,1,2,1,2,1,1,2,1],
+                 [1,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+                 [1,2,1,1,1,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1],
+                 [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+                 [1,2,1,2,1,1,2,1,1,0,0,1,1,2,1,1,2,1,2,1],
+                 [1,2,1,2,1,1,2,1,0,0,0,0,1,2,1,1,2,1,2,1],
+                 [1,2,2,2,2,2,2,1,0,5,0,0,1,2,2,2,2,2,2,1],
+                 [1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1],
+                 [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+                 [1,2,1,2,1,1,2,1,1,2,1,1,1,2,1,1,2,1,2,1],
+                 [1,2,1,2,1,2,2,2,2,2,1,1,2,2,1,1,2,1,2,1],
+                 [1,2,1,2,2,2,1,2,1,2,1,1,2,1,2,2,2,1,2,1],
+                 [1,2,1,1,1,1,1,2,1,2,1,1,2,1,1,2,1,1,2,1],
+                 [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+                 [1,2,1,1,1,1,1,2,1,1,1,1,2,1,1,1,1,1,2,1],
+                 [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+                 [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]]
+    var player_location = [1,1]
+
+    function init_board(){
+      var all_rows = ""
+      for(var i = 0; i< board.length; i++){
+        all_rows += "<div id = row" + i + " class=game_row></div>"
+      }
+      $("#game_board").html(all_rows)
+    }
+
+    function make_pacman(dir){
+      var new_pacman_image = pacman_img_path.slice(0,-4) + dir + ".gif"
+      return new_pacman_image
+    }
+    function update_board(){
+      coins_on_board = 0
+      for(var i = 0; i< board.length; i++){
+        var row = ""
+        var row_id = "#row" + i
+        for(var item = 0; item< board[i].length; item++){
+          var selector = class_scheme[board[i][item]]
+          if(selector == "pacman"){
+            cell = "<div class=" + selector + "><img src='" + make_pacman(dir) + "' alt='pacman'></div>"
+            // cell = make_new_pacman("<div class=" + selector + "><img src='" + pacman_img_path + "' alt='pacman'></div>")
+          }
+          else if(selector == "coin"){
+            coins_on_board += 1
+            cell = "<div class=" + selector + "><img src='" + coin_img_path + "' alt='coin'></div>"
+          }
+          else if(selector == "ghost"){
+            cell = "<div class=" + selector + "><img src='img/" + selector + pacman_options[theme_choice] + ".gif' alt='ghost'></div>"
+          }
+          else if(selector == "cherry"){
+            cell = "<div class=" + selector + "><img src='img/" + selector + pacman_options[theme_choice] + ".png' alt='cherry'></div>"
+          }
+          else{
+            var cell = "<div class=" + selector + "></div>"
+          }
+          row += cell
+        }
+        $(row_id).html(row)
+      }
+      $("#score").html(score)
+      if(coins_on_board == 0 && !won){
+        won = true
+        alert("YOU WIN!")
+      }
+    }
+    function update_player(cur_loc,new_loc){
+        board[cur_loc[0]][cur_loc[1]] = 0
+        board[new_loc[0]][new_loc[1]] = 3
+        player_location = new_loc
+      }
+    function is_wall(cell_val){
+      if(cell_val == 1){
+        return false
+      }
+      else{
+        return true
+      }
+    }
+    function coin_ghost_logic(cell_val){
+      if(cell_val == 2){
+        score += 5
+      }
+      else if(cell_val == 4){
+        score += 50
+      }
+      else if(cell_val == 5){
+        lose = true
+      }
+    }
+    function move_player(direction){
+      var new_loc = []
+      var cur_loc = [player_location[0],player_location[1]]
+      if(direction == "down"){
+        new_loc = [player_location[0],player_location[1]]
+        new_loc[0]+=1
+        if (is_wall(board[new_loc[0]][new_loc[1]])){
+          coin_ghost_logic(board[new_loc[0]][new_loc[1]])
+          update_player(cur_loc,new_loc)
+          update_board()
+        }
+      }
+      else if(direction == "up"){
+        new_loc = [player_location[0],player_location[1]]
+        new_loc[0]-=1
+        if (is_wall(board[new_loc[0]][new_loc[1]])){
+          coin_ghost_logic(board[new_loc[0]][new_loc[1]])
+          update_player(cur_loc,new_loc)
+          update_board()
+        }
+      }
+      else if(direction == "left"){
+        new_loc = [player_location[0],player_location[1]]
+        new_loc[1] -= 1
+        if (is_wall(board[new_loc[0]][new_loc[1]])){
+          coin_ghost_logic(board[new_loc[0]][new_loc[1]])
+          update_player(cur_loc,new_loc)
+          update_board()
+        }
+      }
+      else if(direction == "right"){
+        new_loc = [player_location[0],player_location[1]]
+        new_loc[1]+=1
+        if (is_wall(board[new_loc[0]][new_loc[1]])){
+          coin_ghost_logic(board[new_loc[0]][new_loc[1]])
+          update_player(cur_loc,new_loc)
+          update_board()
+        }
+      }
+    }
+    function key_actions(e){
+        if(e.keyCode == 40 || e.keyCode == 83){
+          dir = "down"
+        }
+        else if(e.keyCode == 37 || e.keyCode == 65){
+          dir = "left"
+        }
+        else if(e.keyCode == 39 || e.keyCode == 68){
+          dir = "right"
+        }
+        else if(e.keyCode == 38 || e.keyCode == 87){
+          dir = "up"
+        }
+        move_player(dir)
+      };
+    function add_cherry(){
+      cherry_y = Math.ceil(Math.random()*board[0].length) - 1
+      cherry_x = Math.ceil(Math.random()*board.length) - 1
+      while(board[cherry_y][cherry_x] == 1 || board[cherry_y][cherry_x] == 2){
+        cherry_y = Math.ceil(Math.random()*board[0].length) - 1
+        cherry_x = Math.ceil(Math.random()*board.length) - 1
+      }
+      board[cherry_y][cherry_x] = 4
+    }
+    function start_game(){
+      if(won == false){
+        $("#time").html(time++)
+        setTimeout(function() {
+          if((cherry_time + time) % bonus_cooldown == 0){
+            add_cherry()
+          }
+          update_board()
+          start_game()
+        }, delay);
+      };
+      }
+    document.onkeydown = function(e){
+      if(lose == false){
+        key_actions(e)
+      }
+      else{
+        alert("Game Over! Please refresh to start again.")
+      }
+    };
+
+    $(document).ready(function(){
+    init_board()
+    update_board()
+    start_game()
+    });
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <div id="game_board"></div>
+      <div id="score_board">
+        <p>Score: <span id="score"></span><br>Time: <span id = "time"></span></p>
+      </div>
+    </div>
+  </body>
+</html>

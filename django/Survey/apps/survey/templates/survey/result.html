@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>User Information</title>
+       {% load staticfiles %}
+       <link rel="stylesheet" href="{% static 'survey/css/result_style.css' %}" media="screen" title="no title" charset="utf-8">
+    </head>
+    </head>
+    <body>
+      <h1>You've submitted this {{request.session.count}} times!</h1>
+      <div id="result_box">
+        <h3>Submitted Info:</h3>
+        <div id="result_titles">
+          <p>Name:</p>
+          <p>Dojo Location:</p>
+          <p>Favorite Language:</p>
+          <p>Comment:</p>
+        </div>
+        <div id="result_information">
+          <p>{{ request.session.name }}</p>
+          <p>{{ request.session.location }} </p>
+          <p>{{ request.session.language }} </p>
+          <p>{{ request.session.comment }}</p>
+        </div>
+      </div>
+      <form action="/">
+        <input type="submit" value="to main">
+      </form>
+    </body>
+</html>

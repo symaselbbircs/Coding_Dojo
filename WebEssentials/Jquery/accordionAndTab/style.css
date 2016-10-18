@@ -1,0 +1,31 @@
+/*CSS reset*/
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+#stored_data{
+  display: inline-block;
+  vertical-align: top;
+}
+
+table{
+  border: 1px solid black;
+}
+
+th{
+  padding-right: 50px;
+}
+
+td{
+  text-align: left;
+  padding-right: 50px;
+}
+
+#submit_users{
+  display: block;
+  margin-left: 20px;
+}
+  #submit_users input{
+    margin-bottom: 4px;
+  }

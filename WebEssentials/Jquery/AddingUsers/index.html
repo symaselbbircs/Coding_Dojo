@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adding Users</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+    function build_table(data){
+      // this should output an html string that we want to inject into our table
+      var html_data = "<tbody><tr>";
+      for(var i = 0; i < data.length; i++){
+        var tmp_data = "<td class='" + data[i]['name'] +"'> " + data[i]['value'] + "</td>"
+        html_data += tmp_data
+      }
+      return html_data + "</tr></tbody>"
+    }
+    $(document).ready(function(){
+      $('#user_form').submit(function(){
+        var data = $('#user_form').serializeArray()
+        var new_table_item = build_table(data)
+        $('#user_table').append(new_table_item)
+        return false
+      });
+      $("#submit_btn").click(function(){
+        $('#user_form').submit();
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <div id = "stored_data">
+      <table id="user_table">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email Address</th>
+            <th>Contact #</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div id="submit_users">
+      <h2>Add Users</h2>
+      <form id="user_form" action="add_user.php">
+        First Name: <input type="text" name="first_name"><br>
+        Last Name: <input type="text" name="last_name"><br>
+        Email: <input type="text" name="email"><br>
+        Contact #: <input type="text" name="contact"><br>
+      </form>
+      <input id="submit_btn" type="submit" value="Add Users">
+    </div>
+  </body>
+</html>
+
+<!-- <tbody>
+  <tr>
+    <td>Quinoa, fruits, and molasses</td>
+    <td>Pizza with avocado on top</td>
+    <td>Palak Paneer</td>
+    <td>Chocolate banana shake</td>
+  </tr> -->

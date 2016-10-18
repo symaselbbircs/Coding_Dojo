@@ -1,0 +1,49 @@
+<html>
+<head>
+  <title>JQuery Demo</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function(){
+        var string = "<b>Goodbye Dojo</b>"
+        $('#myButton').click(function(){
+          var original = '<br>' + string;
+          $('h1').after(original);
+        });
+      });
+  </script>
+</head>
+<body>
+  <h1>Hello Dojo</h1>
+  <p>First Paragraph</p>
+  <button id="myButton">Click me!</button>
+</body>
+</html>
+
+<!--
+Effects (functions to do some cool animation effects)
+.hide()
+.show()
+.toggle()
+.slideDown()
+.slideToggle()
+.slideUp()
+.fadeOut()
+.fadeIn()
+CSS (adding or removing a class for any HTML element/DOM)
+.addClass()
+.removeClass()
+.css()
+Manipulation (retrieving or setting value or text in any HTML element)
+.after()
+.append()
+.prepend()
+.attr()
+.before()
+.html()
+.text()
+.val()
+Events (functions to handle an event)
+.click()
+.on()
+.live() - deprecated (JQuery 1.7)
+.hover() -->

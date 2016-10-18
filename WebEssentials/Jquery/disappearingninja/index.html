@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Disappearing Ninja</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      var kitty_pic = $("img").attr('src');
+      var blank_pic = $("img").attr('ninja');
+      $("img").click(function(){
+        $(this).attr('src',blank_pic);
+      });
+      $(':button').click(function(){
+        $("img").attr('src',kitty_pic);
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <h1>Jquery - Assignment 1</h1>
+    <div id="laserkitteh_1">
+      <img src="img/laser-cat.jpg" alt="laser-cat" ninja="img/white_space.jpg">
+      <img src="img/laser-cat.jpg" alt="laser-cat" ninja="img/white_space.jpg">
+      <img src="img/laser-cat.jpg" alt="laser-cat" ninja="img/white_space.jpg">
+      <img src="img/laser-cat.jpg" alt="laser-cat" ninja="img/white_space.jpg">
+    </div>
+    <div id="laserkitteh_2">
+      <img src="img/laser-cat.jpg" alt="laser-cat" ninja="img/white_space.jpg">
+      <img src="img/laser-cat.jpg" alt="laser-cat" ninja="img/white_space.jpg">
+      <img src="img/laser-cat.jpg" alt="laser-cat" ninja="img/white_space.jpg">
+      <img src="img/laser-cat.jpg" alt="laser-cat" ninja="img/white_space.jpg">
+    </div>
+    <button>Restore all laser kitties!</button>
+  </body>
+</html>

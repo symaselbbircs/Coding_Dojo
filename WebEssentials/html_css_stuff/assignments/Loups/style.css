@@ -1,0 +1,76 @@
+/*CSS reset settings here*/
+/**{
+ margin: 0px;
+ padding: 0px;
+}*/
+h1{
+  padding: 10px;
+  font-size: 45px;
+}
+#background{
+ width: 970px;
+ background-color: rgb(249, 249, 249);
+ margin: 0px;
+ padding: 10px 10px 10px 5px;
+}
+#header{
+ height: auto;
+ background-color: rgb(220, 220, 220);
+ margin-top: -25px;
+}
+#articles{
+ height: auto;
+ width: 225px;
+ background-color: rgb(220, 220, 220);
+ display: inline-block;
+ white-space: nowrap;
+ font-size: 15px;
+}
+#articles ul{
+  margin-left: -1em;
+  padding-right: 10px;
+}
+#articles a:link{
+  text-decoration: none;
+}
+#article_title{
+  list-style: none;
+  margin-left: -1em;
+}
+#main_content{
+ height: 400px;
+ width: 690px;
+ background-color: rgb(175, 175, 175);
+ display: inline-block;
+ vertical-align: top;
+ margin-left: 15px;
+ padding: 15px;
+}
+#subcontents{
+ height: auto;
+ width: auto;
+ margin: 10px;
+}
+.rcorners{
+  border-radius: 25px;
+}
+#advertisement{
+ height: 120px;
+ width: 660px;
+ background-color: purple;
+ margin-top: 20px;
+}
+#footer{
+  height: 75px;
+  background-color: rgb(220, 220, 220);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#footer p{
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+.important{
+  font-weight: bold;
+}

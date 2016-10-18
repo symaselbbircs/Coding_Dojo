@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel='stylesheet' type='text/css' href="{{url_for('static',filename='login_style.css')}}">
+  </head>
+  <body>
+    <div id="header">
+      <h1>Welcome to the Login Page!</h1>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for type in messages[0] %}
+            <div class="{{ type }}"}}>
+              <p>{{ messages[0][type] }}</p>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+    <div id="login_submit">
+      <form action="/login" method="POST">
+        <p><label for="username">Username:<input class="table_cell" type="text" name="username"></label></p>
+        <p><label for="password">Password:<input class="table_cell" type="password" name="password"></label></p>
+        <input type="submit" value="Login">
+      </form>
+      <form action="/users/new" method="GET">
+        <input type="submit" value="Add New User">
+      </form>
+    </div>
+  </body>
+</html>

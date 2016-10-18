@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  margin-left: 400px;
+}
+
+#register_user{
+  margin-left: 410px;
+  padding: 10px;
+  height: 180px;
+  width: 437px;
+  border: 2px solid black;
+}
+  #register_user form{
+    margin-left: 50px;
+    padding: 2px;
+    display: table;
+    font-weight: bold;
+  }
+  #register_user label{
+    display: table-cell;
+  }
+  #register_user p{
+    display: table-row;
+  }
+#submit_newuser{
+  margin-left: 100px;
+}
+.table{
+  display: table-cell;
+  width: 120px;
+  margin-bottom: 5px;
+}
+
+.alert{
+  margin: 10px;
+  padding-left: 5px;
+  padding-bottom: 8px;
+  background-color: red;
+  color: white;
+  font-family: sans-serif;
+  border: 2px solid black;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>New User Registration</title>
+    <link rel='stylesheet' type='text/css' href="{{url_for('static',filename='newuser_style.css')}}">
+  </head>
+  <body>
+    <div id="header">
+      <h1>Welcome to the Registration Page!</h1>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert">
+            <p>So we found some issues...</p><br>
+            {% for message in messages %}
+              <p>{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+    </div>
+    <div id="register_user">
+      <form action="/users/new" method="POST">
+        <p><label for="username">Username:</label><input class="table"  type="text" name="username"></p>
+        <p><label for="first_name">First Name:</label><input class="table" type="text" name="first_name"></p>
+        <p><label for="last_name">Last Name:</label><input class="table" type="text" name="last_name"></p>
+        <p><label for="email">Email:</label><input class="table" type="text" name="email"></p>
+        <p><label for="password1">Password:</label><input class="table" type="password" name="password1"></p>
+        <p><label for="password2">Confirm Password:</label><input class="table" type="password" name="password2"></p>
+        <input id="submit_newuser" type="submit" value="Add User">
+      </form>
+    </div>
+  </body>
+</html>

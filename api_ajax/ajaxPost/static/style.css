@@ -1,0 +1,11 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.posts{
+  padding: 10px;
+  border: 1px solid black;
+  margin-bottom: 15px;
+  display: inline-block;
+}

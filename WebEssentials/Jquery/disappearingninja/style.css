@@ -1,0 +1,30 @@
+/*CSS reset*/
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+div {
+  margin-left: 50px;
+  height: 250px;
+  width: 820px;
+}
+
+h1{
+  margin-left: 350px;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+}
+
+button {
+  margin-left: 380px;
+  height: 25px;
+  width: 150px;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  background: green;
+}

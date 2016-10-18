@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  <script>
+  function validate_info(from_date,to_date,name){
+    var currentDate = new Date()
+    var f = Date.parse(from_date)
+    var t = Date.parse(to_date)
+    if(name == ''){
+      return false
+    }
+    else if(f > t){
+      return false
+    }
+    else if(currentDate > f){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+  $( function() {
+    $( "#from_date" ).datepicker();
+    $( "#to_date" ).datepicker();
+  } );
+  $(document).ready(function(){
+    $( "#submit_btn" ).click(function(){
+      var from_date = $( "#from_date" ).val();
+      var to_date = $( "#to_date" ).val();
+      var name = $( "#name" ).val();
+      console.log(from_date,to_date,name)
+      if(validate_info(from_date,to_date,name)){
+        var response = "Hello " + name + "! Your cruise leaves on " + from_date + " and returns on " + to_date + "!"
+      }
+      else{
+        var response = "Oops! Looks like this trip isn't available."
+      }
+      alert(response)
+    });
+  });
+  </script>
+</head>
+<body>
+  <h1>Welcome to the Codingdojo plan-a-Cruise!</h1>
+  <div class="container"><p>From: <input type="text" id="from_date"></p></div>
+  <div class="container"><p>To: <input type="text" id="to_date"></p></div>
+  <div class="container"><p>Name: <input type="text" id="name"></p></div>
+  <input id="submit_btn" type="submit" value="Submit">
+
+
+</body>
+</html>

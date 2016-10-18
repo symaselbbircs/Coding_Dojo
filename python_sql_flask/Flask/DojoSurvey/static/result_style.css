@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  text-decoration: underline;
+}
+
+#result_titles, #result_information{
+  display: inline-block;
+}
+
+#result_box{
+  margin: 50px;
+  border: 1px solid black;
+  width: 250px;
+}
+
+input {
+  margin-left: 250px;
+}

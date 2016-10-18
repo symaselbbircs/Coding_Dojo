@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Disappearing Ninja</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $("img").click(function(){
+        if($(this).attr('src') == $(this).attr('ninja')){
+          var kitty = "img/" + $(this).attr('id') + ".png"
+          $(this).attr('src',kitty);
+        }
+        else{
+          var ninja = $(this).attr('src',$(this).attr('ninja'));
+        }
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <h1>Jquery - Assignment 2</h1>
+    <div id="ninja_kitteh">
+      <img id="cat0" src="img/cat0.png" alt="cat0" ninja="img/ninja0.png">
+      <img id="cat1" src="img/cat1.png" alt="cat1" ninja="img/ninja1.png">
+      <img id="cat2" src="img/cat2.png" alt="cat2" ninja="img/ninja2.png">
+      <img id="cat3" src="img/cat3.png" alt="cat3" ninja="img/ninja3.png">
+      <img id="cat4" src="img/cat4.png" alt="cat4" ninja="img/ninja4.png">
+    </div>
+  </body>
+</html>

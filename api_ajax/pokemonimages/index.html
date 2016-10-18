@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Pokemon!</title>
+    <meta name="description" content="Images of all 151 pokemon">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css_2.css"> -->
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+    <script type="text/javascript">
+    var base_img = "<img src="
+    var all_pokemon_img = ""
+    $(document).ready(function(){
+      $( "#pokemon_img_container" ).html("<h4>Loading Pokemon!</h4>")
+      for(var i = 1; i< 152; i++){
+        var poke_url = "http://pokeapi.co/media/img/" + i + ".png>"
+        all_pokemon_img = all_pokemon_img + base_img + poke_url
+        // $( "#pokemon_img_container" ).append(base_img + poke_url)
+      };
+      $( "#pokemon_img_container" ).html(all_pokemon_img)
+    });
+    </script>
+  </head>
+  <body>
+    <div id="pokemon_img_container">
+    </div>
+  </body>
+</html>

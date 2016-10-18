@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JQuery Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" type="text.css" href="style.css">
+    <style>
+    /*Used for addClass function*/
+    .rainbow {
+      background: red;
+      background: linear-gradient(top,red,orange,yellow,green,blue,indigo,violet);
+      background: -webkit-linear-gradient(top,red,orange,yellow,green,blue,indigo,violet);
+      background: -o-linear-gradient(top,red,orange,yellow,green,blue,indigo,violet);
+      background: -moz-linear-gradient(top,red,orange,yellow,green,blue,indigo,violet);
+    }
+    </style>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      var ids = [];
+      var id_count = 1;
+      var text_count = 0;
+      var click_count = 1;
+      $("#background").find("div").each(function(){ids.push(this.id)});
+      for(click_count; click_count < ids.length; click_count++){
+        var new_option = "<option value =\"" + ids[click_count] + "\">" + ids[click_count] + "</option>"
+        // $("#selector, selector").wrapInner(new_option);
+      }
+      // $("#background").html($("#addClass").html() + $("#click").html());
+
+      $("#click-button").click(function(){
+        var response = ["When you click the button below, something happens!",
+                        "See what you did!",
+                        "Now You're never going to get back to the original text.",
+                        "But maybe you will if you keep clicking.",
+                        "Click",
+                        "Click.",
+                        "Click..",
+                        "Click...",
+                        "Tired yet?",
+                        "Common, just quit it.",
+                        "Please stop.",
+                        "This is tiring...",
+                        "Ok fine.",
+                        "You win.",
+                        "Let's get you back to the original text...",
+                        "...Do you really want to?",
+                        "Please just stop.",
+                        "This is a lot of work.",
+                        "Fin."];
+        $("#click-text").text(response[click_count % response.length]);
+        click_count +=1;
+      });
+      $("#focus-button").click(function(){
+        $("#click-button").focus();
+      });
+      $("#addClass-button").click(function(){
+        $("#addClass").addClass("rainbow")
+      });
+      $("#val-button").click(function(){
+        var selection = $("#selector").val();
+        $("#val-text").text("Selector is showing " + selection)
+      });
+      $("#text-button").click(function(){
+        text_count += 1;
+        var text = "You've clicked this button " + text_count + " times!"
+        $("#text-text").text(text)
+      })
+      $("#attr-button").click(function(){
+        var text = $("em").attr('title');
+        $("#attr-text").text(text);
+      });
+      $("#html-button").click(function(){
+        var text = "<p>Aren't you glad you did this?</p>"
+        $("html").html(text + $("#select").html())
+      });
+
+    });
+    </script>
+  </head>
+  <body>
+      <div id="background">
+      <div id="select">
+        <select id="selector">
+          <option value="click">click</option>
+          <option value="focus">focus</option>
+          <option value="addClass">addClass</option>
+          <option value="val">val</option>
+          <option value="text">text</option>
+          <option value="attr">attr</option>
+          <option value="html">html</option>
+          <option value="data">data</option>
+          <option value="before">before</option>
+          <option value="after">after</option>
+          <option value="append">append</option>
+          <option value="show">show</option>
+          <option value="hide">hide</option>
+          <option value="toggle">toggle</option>
+          <option value="fadein">fadein</option>
+          <option value="fadeout">fadeout</option>
+          <option value="slidedown">slidedown</option>
+          <option value="slideup">slideup</option>
+          <option value="slidetoggle">slidetoggle</option>
+        </select>
+      </div>
+      <div id="focus">
+        <h1>Focus Function</h1>
+        <button id="focus-button">Look at the button below!</button><hr><br>
+      </div>
+      <div id="click">
+        <h1>Click Function</h1>
+        <p id="click-text">When you click the button below, something happens!</p>
+        <button id="click-button">Click Me!</button><hr><br>
+      </div>
+      <div id="addClass">
+        <h1>addClass Function</h1>
+        <button id="addClass-button">Let's give this some color!</button><hr><br>
+      </div>
+      <div id="val">
+        <h1>Val Function</h1>
+        <p id="val-text"></p>
+        <button id="val-button">Click Me!</button><hr><br>
+      </div>
+      <div id="text">
+        <h1>Text Function</h1>
+        <p id="text-text"></p>
+        <button id="text-button">Click Me!</button><hr><br>
+      </div>
+      <div id="attr">
+        <h1>attr Function</h1>
+        <p id="attr-text"></p>
+        <button id="attr-button">Click <em title="myself">Me</em>!</button><hr><br>
+      </div>
+      <div id="html">
+        <h1>HTML Function</h1>
+        <button id="html-button">Too much clutter!</button><hr><br>
+      </div>
+      <div id="data">
+        <h1>data Function</h1>
+        <button>Click Me!</button><hr><br>
+      </div>
+      <div id="before">
+        <h1>before Function</h1>
+        <p>To be continued...</p>
+        <button>Click Me!</button><hr><br>
+      </div>
+      <div id="after">
+        <h1>After Function</h1>
+        <p>To be continued...</p>
+        <button>Click Me!</button><hr><br>
+      </div>
+      <div id="append">
+        <h1>Append Function</h1>
+        <p>To be continued...</p>
+        <button>Click Me!</button><hr><br>
+      </div>
+      <div id="show">
+        <h1>Show Function</h1>
+        <p>To be continued...</p>
+        <button>Click Me!</button><hr><br>
+      </div>
+      <div id="hide">
+        <h1>Hide Function</h1>
+        <p>To be continued...</p>
+        <button>Click Me!</button><hr><br>
+      </div>
+      <div id="toggle">
+        <h1>Toggle Function</h1>
+        <p>To be continued...</p>
+        <button>Click Me!</button><hr><br>
+      </div>
+      <div id="fadein">
+        <h1>Fadein Function</h1>
+        <p>To be continued...</p>
+        <button>Click Me!</button><hr><br>
+      </div>
+      <div id="fadeout">
+        <h1>Fadeout Function</h1>
+        <p>To be continued...</p>
+        <button>Click Me!</button><hr><br>
+      </div>
+      <div id="slidedown">
+        <h1>SlideDown Function</h1>
+        <p>To be continued...</p>
+        <button>Click Me!</button><hr><br>
+      </div>
+      <div id="slideup">
+        <h1>Slideup Function</h1>
+        <p>To be continued...</p>
+        <button>Click Me!</button><hr><br>
+      </div>
+      <div id="slidetoggle">
+        <h1>Slidetoggle Function</h1>
+        <p>To be continued...</p>
+        <button>Click Me!</button><hr><br>
+      </div>
+    </div>
+  </body>
+<html>

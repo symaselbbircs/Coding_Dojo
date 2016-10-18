@@ -1,0 +1,58 @@
+/*CSS reset settings here*/
+*{
+ margin: 0px;
+ padding: 0px;
+}
+#square {
+  margin: 20px;
+  width: 140px;
+  height: 140px;
+}
+
+#up-triangle {
+  margin: 20px;
+  width:0;
+  height:0;
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
+  border-bottom: 150px solid green;
+}
+
+#circle {
+  margin: 20px;
+  width: 100px;
+  height: 100px;
+  background: indigo;
+  border-radius: 50px;
+}
+#pacman-background{
+  margin: 20px;
+  height: 140px;
+  width: 140px;
+  background: black;
+}
+#pacman{
+  width: 0px;
+  height: 0px;
+  border-top-right-radius: 60px;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-top: 50px solid yellow;
+  border-right: 50px solid transparent;
+  border-bottom: 50px solid yellow;
+  border-left: 50px solid yellow;
+
+}
+
+.rainbow {
+  background: red;
+  background: linear-gradient(top,red,orange,yellow,green,blue,indigo,violet);
+  background: -webkit-linear-gradient(top,red,orange,yellow,green,blue,indigo,violet);
+  background: -o-linear-gradient(top,red,orange,yellow,green,blue,indigo,violet);
+  background: -moz-linear-gradient(top,red,orange,yellow,green,blue,indigo,violet);
+
+}
+.rainbowcircle {
+
+}

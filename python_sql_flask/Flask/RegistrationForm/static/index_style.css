@@ -1,0 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.alert {
+  color: red;
+}
+
+.success{
+  color: green;
+}

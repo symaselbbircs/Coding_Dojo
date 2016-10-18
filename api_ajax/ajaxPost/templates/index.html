@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Posts</title>
+    <link rel='stylesheet' type='text/css' href="{{url_for('static',filename='style.css')}}">
+    <script   src="http://code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+    function get_posts(){
+      $.ajax({
+        method: 'get',
+        url: '/posts',
+        success: function(posts){
+          $("#description_posts").html(posts)
+        }
+      })
+    }
+    $(document).ready(function(){
+
+      get_posts()
+
+      $(document).on("click","form",function(){
+        $.ajax({
+          method:'POST',
+          data: {description:$("#comment").val()},
+          url: '/posts/create',
+          success: function(data){
+            console.log(data)
+            $("#description_posts").html(data)
+            $("#comment").val(" ")
+          },
+          dataType: "html"
+        })
+        return false;
+      })
+    });
+    </script>
+  </head>
+  <body>
+    <h1>My Posts</h1>
+    <div id="description_posts">
+      <div class="posts">
+      </div>
+    </div>
+    <textarea id="comment" name="description" form="submitDescription"></textarea>
+    <form method="POST" id="submitDescription">
+      <input type="submit">
+    </form>
+  </body>
+</html>

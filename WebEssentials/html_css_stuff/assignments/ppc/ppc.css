@@ -1,0 +1,160 @@
+*{
+  font-family: "Tahoma";
+}
+#background{
+  background-color: white;
+  height: auto;
+  width: 970px;
+}
+#header {
+  background-color: white;
+  width: inherit;
+  height: auto;
+  font-size: 0;
+  padding-left: 0px;
+}
+#header-main {
+  width: 970px;
+  margin: 0px;
+  padding: 0px;
+  display: inline-block;
+  text-align: center;
+}
+  #header-main p{
+    display:inline-block;
+    font-size: 20px;
+    color: black;
+    margin-left: 200px;
+  }
+  #header-main img{
+    width: auto;
+    height: 80px;
+    display:inline-block;
+    margin-right: 50px;
+  }
+#header-nav {
+    margin: 0px;
+    padding: 0px;
+    font-size: 0px;
+    border-top: 2px solid darkgrey;
+  }
+  #header-nav ul{
+    margin: 0;
+    padding: 0;
+    width: 970px;
+    text-align: right;
+    border-left: : 1px solid darkgrey;
+    display: inline-block;
+    text-align: center;
+  }
+  #header-nav li{
+    display: inline-block;
+    margin: 0;
+    padding: 5px 10px;
+    border-top: 0;
+    border-left: 1px solid darkgrey;
+    border-right: 1px solid darkgrey;
+    background-image: linear-gradient(top, #F3F6F7 19px, #EDF0F4 20px);
+  }
+  #header-nav li a{
+    color: rgb(113, 113, 113);
+    padding: 10px 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+  }
+#main{
+  background-color: black;
+  margin-top: 30px;
+  padding: 10px;
+  padding-top: 25px;
+}
+  #main img{
+    display: inline-block;
+    vertical-align: top;
+  }
+#main-right{
+  display: inline-block;
+  width: 560px;
+}
+  #main h1{
+    margin-top: 0;
+    font-size: 20px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+  }
+#main-right {
+  background-color: rgb(94, 94, 94);
+  vertical-align: top;
+  padding: 0;
+  margin: 0;
+}
+#main-right-content {
+  color: #a7a7a7;
+  font-size: 12px;
+  padding: 0 15px;
+  padding-bottom: 25px;
+}
+  #main-right-content span{
+    font-weight: bold;
+  }
+#logo_info{
+
+}
+#logo_info p{
+  vertical-align:;
+  display: inline-block;
+  color: #ffd600;
+  font-size: 10px;
+}
+#service{
+  width: 970px;
+}
+.service{
+  width: 200px;
+  height: 265px;
+  background-color: #fff4b8;
+  display: inline-block;
+  font-size: 0;
+  vertical-align: top;
+  padding: 0px;
+  margin-top: 20px;
+  margin-left: 0px;
+  margin-right: 38px;
+}
+  .service h4{
+    margin: 0;
+    padding: 5px 10px;
+    padding-right: 0;
+    font-size: 15px;
+    font-weight: thin;
+  }
+  .service p{
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+  .service img{
+    margin-top: 0;
+    width: 198px;
+  }
+  .service a{
+    border: 2px solid black;
+    font-size: 15px;
+    color: black;
+    background-color: #ffd600;
+    margin-left: 100px;
+    margin-top: 0px;
+  }
+.gradientBW {
+  background-image: linear-gradient(#E6E6E6,#FFFFFF);
+}
+.gradient-nav{
+  background-image: linear-gradient(#e6ebf2, #a7a7a7);
+}
+.gradient_orange {
+  background-image: linear-gradient(#ffd600, #bd8800);
+}
+.gradient_main {
+  background-image: linear-gradient(top, #000000, #ffffff, #000000);
+}

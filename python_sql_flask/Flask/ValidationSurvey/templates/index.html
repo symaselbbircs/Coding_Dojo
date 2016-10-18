@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Dojo Survey</title>
+       	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='index_style.css')}}">
+    </head>
+    <body>
+      <div id="submission_box">
+        <div id="submission_titles">
+          <p>Your Name:</p>
+          <p>Dojo Location:</p>
+          <p>Favorite Language:</p>
+        </div>
+        <form id="user_info" action='/result' method='post'>
+            <input type='text' name='name'><br>
+            <select name='location'>
+              <option value="San Jose">San Jose</option>
+              <option value="Bellevue">Bellevue</option>
+              <option value="Burbank">Burbank</option>
+              <option value="Chicago">Chicago</option>
+              <option value="Dallas">Dallas</option>
+              <option value="DC">DC</option>
+            </select><br>
+            <select name='language'>
+              <option value="Python">Python</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Haskell">Haskell</option>
+              <option value="C++">C++</option>
+              <option value="Matlab">Matlab</option>
+              <option value="Machine Language">Machine Language</option>
+            </select>
+        </form>
+        <p>Comment:</p>
+        <textarea form="user_info" name="comment" rows="4" cols="50">Tell us something about yourself!</textarea>
+        <input form="user_info" type='submit' value='create user'>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="alert_text">{{message}}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </div>
+    </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Notes</title>
+    <link rel='stylesheet' type='text/css' href="{{url_for('static',filename='style.css')}}">
+    <script   src="http://code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    var default_note = "Enter description here..."
+    var default_title = "Insert note title here..."
+
+    function get_posts(){
+      $.ajax({
+        method: 'get',
+        url: '/notes',
+        success: function(posts){
+          $("#all_notes").html(posts)
+        }
+      })
+    }
+
+    function delete_post(id){
+      $.ajax({
+        method: 'GET',
+        url: 'notes/del/' + id,
+        success: function(data){
+          $("#all_notes").html(data)
+        }
+      })
+    }
+
+    function add_post(){
+      $.ajax({
+        method:'POST',
+        data: {new_title:$("#note_title").val(),
+               new_description:$("#note_description").val()},
+        url: '/notes/add',
+        success: function(data){
+          $("#all_notes").html(data)
+          $("#note_description").val(default_note)
+          $("#note_title").val(default_title)
+        },
+        dataType: "html"
+      })
+    }
+
+    function edit_post(id, title, description, success_obj){
+      $.ajax({
+        method: 'POST',
+        data:{title:title,
+              description:description},
+        url: '/notes/update/' + id,
+        success: function(posts){
+          $("#all_notes").html(posts)
+        },
+        dataType: "html"
+      })
+    }
+
+    $(document).ready(function(){
+      get_posts()
+
+      $("#note_description").click(function(){
+        if ($(this).val() == default_note){
+          $(this).val("")
+        }
+      })
+      $("#note_description").focusout(function(){
+        if ($(this).val() == ""){
+          $(this).val(default_note)
+        }
+      });
+      $("#note_title").click(function(){
+        if ($(this).val() == default_title){
+          $(this).val("")
+        }
+      });
+      $("#note_title").focusout(function(){
+        if ($(this).val() == ""){
+          $(this).val(default_title)
+        }
+      });
+
+      $(document).on("click",".edit_post",function(){
+        var id = $(this).parent().parent().attr('id');
+        var title= $(this).parent().parent().find(".note_header").children(".note_title").val();
+        var description = $(this).parent().parent().find(".note_content").text().strip();
+        edit_post(id, title, description)
+        $(this).siblings(".edit_success").css('visibility','visible')
+        return false;
+      })
+
+      $(document).on("click",".del_post",function(){
+        delete_post($(this).parent().parent().attr('id'))
+        return false;
+      });
+
+      $(document).on("click","#post_note",function(){
+        add_post()
+        return false;
+      });
+    });
+    </script>
+    </head>
+    <body>
+      <h1 id="title">Ajax Notes Assignment</h1><hr>
+      <div id="all_notes">
+        <!-- Left empty and to be filled by flask route /notes -->
+      </div>
+      <div id="new_note">
+        <h2 id="add_a_note">Add a Note!</h2>
+        <textarea id="note_description" name="new_note" form="post_note" >Enter description here...</textarea><hr>
+        <textarea id="note_title" name="new_title" form="post_note">Insert note title here...</textarea>
+        <form id="post_note" methods="POST">
+          <button id="post_button" type="button" form="post_note">Add Note</button>
+        </form>
+      </div>
+    </body>
+</html>

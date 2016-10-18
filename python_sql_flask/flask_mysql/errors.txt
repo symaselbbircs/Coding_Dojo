@@ -1,0 +1,25 @@
+1. incorect password: 
+sqlalchemy.exc.OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+
+2. incorrect username:
+sqlalchemy.exc.OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'Joey'@'localhost' (using password: YES)")
+
+3. incorrect port:
+sqlalchemy.exc.OperationalError: (_mysql_exceptions.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1' (61)")
+
+4. incorrect database:
+sqlalchemy.exc.OperationalError: (_mysql_exceptions.OperationalError) (1049, "Unknown database 'spongebobcirclepants'")
+
+5. I changed and realized you do not actually use config['host']. I see this wasn't done because what should actually be in there is:
+config = {
+         	 'host': '127.0.0.1',
+			 'database': db, # we got db as an argument								                'user': 'root',
+			 'password': 'root',
+			 'port': '8889' # change the port to match the port your SQL server is running on
+					
+					}
+
+and:
+DATABASE_URI = "mysql://{}:{}@{}:{}/{}".format(config['user'], config['password'], config['host'], config['port'], config['database'])
+
+This is why no error was produced.

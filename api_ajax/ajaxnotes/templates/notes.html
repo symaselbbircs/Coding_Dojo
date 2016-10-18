@@ -1,0 +1,24 @@
+{% for note in data %}
+  <div class="note" id="note{{note.id}}">
+    <div class="note_header">
+      <textarea class="note_title">{{note.title}}</textarea>
+      <p>{{note.date}}</p>
+    </div>
+    <div class="note_content">
+      <textarea>{{note.description}}</textarea>
+    </div>
+    <div class="note_footer">
+      <p class="edit_success">Success!</p>
+      <form class="edit_post" method="GET" class="inline">
+        <button type="submit" class="link-button">
+          Edit
+        </button>
+      </form>
+      <form class="del_post" class="inline">
+        <button type="submit" class="link-button">
+          Delete
+        </button>
+      </form>
+    </div>
+  </div>
+{% endfor %}

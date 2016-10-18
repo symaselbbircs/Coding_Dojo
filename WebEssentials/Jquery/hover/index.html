@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hover In/Out</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      var shark = 'img/sharknado.jpg';
+      var kitty = 'img/ninjacat.jpg';
+
+      $('img').hover(function(){
+        $(this).attr('src',kitty);
+      },function(){
+        $(this).attr('src',shark);
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <h1>Jquery - Bonus Assignment</h1>
+    <div id="images_box">
+      <img src="img/sharknado.jpg" alt="sharknado">
+      <img src="img/sharknado.jpg" alt="sharknado">
+      <img src="img/sharknado.jpg" alt="sharknado">
+      <img src="img/sharknado.jpg" alt="sharknado">
+    </div>
+  </body>
+</html>

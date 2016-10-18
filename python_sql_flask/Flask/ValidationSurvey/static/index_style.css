@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#submission_box {
+  margin: 50px;
+  height: 200px;
+  width: 400px;
+  border: 1px solid black;
+}
+
+#submission_titles{
+  display: inline-block;
+}
+
+#user_info {
+  width: 150px;
+  display: inline-block;
+  text-align: right;
+}
+
+select {
+  width: 131px;
+}
+
+.alert_text{
+  color: red;
+}
+  /*#submission_titles p{
+    display:inline-block;
+  }*/

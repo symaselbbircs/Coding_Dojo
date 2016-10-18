@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>All Friends</title>
+  <link rel='stylesheet' type='text/css' href="{{url_for('static',filename='index_style.css')}}">
+</head>
+<body>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for type in messages[0] %}
+        <div class="{{ type }}"}}>
+          <p>{{ messages[0][type] }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <h1>These are all my friends!</h1>
+  <table>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Created at</th>
+      <th>Last updated</th>
+      <th colspan="2">Modify</th>
+    </tr>
+    {% for friend in all_friends %}
+    <tr>
+      <td>{{ friend['first_name']}}</td>
+      <td>{{ friend['last_name'] }}</td>
+      <td>{{ friend['created_at'] }}</td>
+      <td>{{ friend['updated_at'] }}</td>
+      <td>
+        <form action="/friends/{{ friend['id'] }}/edit" method="GET" class="inline">
+          <button type="submit" class="link-button">
+            Edit
+          </button>
+        </form>
+      </td>
+      <td>
+        <form action="/friends/{{ friend['id'] }}/delete" method="POST" class="inline">
+        <button type="submit" class="link-button">
+          Delete
+        </button>
+      </form></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div id ="addfriends">
+    <h2>Add a Friend</h2>
+    <form action='/friends' method='POST'>
+      <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label><br>
+      <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label><br>
+      <input type="submit" value="Add">
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+textarea{
+  resize: none;
+}
+
+#title{
+  margin-left: 480px;
+}
+
+#add_a_note{
+  margin-left: 10px;
+}
+
+#new_note{
+  display: inline-block;
+  padding: 10px;
+  vertical-align: top;
+  width: 153px;
+  position: fixed;
+  }
+#note_description{
+  width: 150px;
+  height: 200px;
+  }
+
+#note_title{
+  display: block;
+  height: 15px;
+  margin-top: 5px;
+  margin-bottom: 2px;
+  width: 150px;
+}
+
+#all_notes{
+  display: inline-block;
+  padding: 10px;
+  width: 1080px;
+}
+
+.note{
+  background-color: lightyellow;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid rgba(226, 227, 174, 0.95);
+  -webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+  -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+  height: 200px;
+  margin: 5px 8px;
+  width: 300px;
+}
+
+.note_header{
+  background-color: yellow;
+  overflow:hidden;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+
+.note_header textarea{
+  background-color: inherit;
+  overflow-y: none;
+  padding: 2px;
+  font-weight: bold;
+  border: none;
+  width: 295px;
+  height: 13px;
+  padding: 2px;
+}
+
+.note_content{
+  font-family: cursive;
+  height: 120px;
+  overflow: hidden;
+  padding: 5px;
+  }
+  .note_content button, form{
+    display: inline-block;
+    }
+  .note_content textarea{
+    background-color: inherit;
+    border: none;
+    overflow-y: scroll;
+    font-family: cursive;
+    padding-right: 20px;
+    width: 290px;
+    height: inherit;
+  }
+
+.note_footer{
+  margin-left: 218px;
+}
+.edit_success{
+  visibility: hidden;
+}
+/*This is for all edit and delete buttons*/
+.inline{
+  display: inline;
+  color: green;
+}
+
+.link-button{
+  background: none;
+  border: none;
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.link-button:focus{
+  outline: none;
+}
+.link-button:active{
+  color: red;
+}

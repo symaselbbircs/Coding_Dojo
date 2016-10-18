@@ -1,0 +1,168 @@
+/*CSS reset settings here*/
+/**{
+ margin: 0px;
+ padding: 0px;
+}*/
+#background{
+  background-color: white;
+  height: auto;
+  width: 970px;
+}
+#header {
+  background-color: white;
+  width: inherit;
+  height: auto;
+  font-size: 0;
+  padding-left: 0px;
+}
+  #header img{
+    width: auto;
+    height: 75px;
+    display:inline-block;
+  }
+#header-main {
+  margin: 0px;
+  padding: 0px;
+  font-size: 0px;
+  display: inline-block;
+}
+#header-slogan {
+  padding-left: 5px;
+  margin: 0;
+  display: inline-block;
+  width: 350px;
+  height: 55px;
+  background-color: darkred;
+  padding-top: 20px;
+  font-size: 0;
+  vertical-align: top;
+}
+  #header-slogan h2{
+    font-size: 25px;
+    display: inline;
+    color: white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  }
+#header-search {
+  height: inherit;
+  width: 312px;
+  height: 75px;
+  display: inline-block;
+  background-color: darkred;
+  font-size: 11px;
+  vertical-align: top;
+}
+  #header-search a{
+    color: rgb(240, 210, 0);
+    text-align: left;
+  }
+  #header-search ul{
+    padding-left: 0;
+  }
+  #header-search span{
+    color: white;
+    font-size: 12px;
+  }
+  #header-search li{
+    display: inline-block;
+    content: none;
+  }
+  #header-search button{
+    border-width: thin;
+    background-color: white;
+    color: white;
+    text-align: center;
+    background-color: darkred;
+  }
+  #header-search input{
+    margin-left: 15px;
+  }
+
+#header-nav {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+  }
+  #header-nav ul{
+    margin: 0;
+    padding: 0;
+    width: 970px;
+    border: 1px solid darkgrey;
+    display: inline-table;
+  }
+  #header-nav li:before{
+    content: " | ";
+    color: grey;
+    margin: 0;
+    padding-right: 10px;
+  }
+  #header-nav li:first-child:before{
+    content: none;
+  }
+  #header-nav li:last-child{
+    width: 253px;
+  }
+  #header-nav li{
+    display: inline-block;
+    margin: 0;
+    padding-right: 5px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(240, 240, 240);
+  }
+  #header-nav li a{
+    color: rgb(144, 144, 144);
+    font-weight: bold;
+  }
+  #header-nav li a:link{
+    text-decoration: none;
+  }
+#nav{
+  background-color: rgb(240, 240, 240);
+  width: 140px;
+  margin-top: 25px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: inline-block;
+  padding-top: 10px;
+  padding-left: 15px;
+  border: 1px solid lightgrey;
+  vertical-align: top;
+}
+  #nav a{
+    color: darkred;
+  }
+  #nav ul{
+    list-style: none;
+    display: block;
+    margin-top: 0;
+    padding-right: 5px;
+  }
+  #nav li:before{
+    content: "\00BB \0020";
+    margin-left: -12px;
+  }
+  #nav li{
+    color: darkred;
+    margin-left: -2em;
+    margin-bottom: 5px;
+  }
+#main-content{
+  background-color: white;
+  padding-right: 0px;
+  width: 690px;
+  height: auto;
+  display: inline-block;
+}
+  #main-content h1, h4, a{
+    color: darkred;
+  }
+  #main-content hr{
+    height: 2px;
+    background-color: darkgrey;
+    color: darkgrey;
+  }
+  #main-content span{
+    font-weight: bold;
+  }

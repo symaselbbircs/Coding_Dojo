@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sortable Ninja</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <style>
+    #sortable { list-style-type: none; margin-left: 330px; padding: 0; width: 60%; }
+    #sortable li { margin: 0 3px 3px 3px; padding: 0; padding-left: 1.5em; font-size: 0; height: auto; }
+    #sortable li span { position: absolute; margin-left: -1.3em; }
+    h1 { margin-left: 400px;}
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script>
+    $( function() {
+      $( "#sortable" ).sortable();
+    } );
+    </script>
+  </head>
+  <body>
+    <h1>Sortable Ninja</h1>
+    <div id="ninja_img">
+      <ul id="sortable">
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><img src="sorting_images/sort1.png" alt="sort1"></li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><img src="sorting_images/sort2.png" alt="sort2"></li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><img src="sorting_images/sort3.png" alt="sort3"></li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><img src="sorting_images/sort4.png" alt="sort4"></li>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><img src="sorting_images/sort5.png" alt="sort5"></li>
+      </ul>
+    </div>
+  </body>
+</html>

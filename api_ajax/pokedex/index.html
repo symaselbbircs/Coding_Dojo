@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Pokedex</title>
+    <meta name="description" content="Pokedex of all 151 pokemon">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script   src="http://code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    var base_img = "<img "
+    var all_pokemon_img = ""
+    var poke_data = ""
+    var poke_url_base = "http://pokeapi.co/media/img/"
+
+
+    function query_poke_data(id){
+      $.get("http://pokeapi.co/api/v1/pokemon/" + id + "/", function(data){
+
+      }, "json")
+      .done(function(data) {
+        poke_data = data
+        build_pokedex(id)
+      })
+      .fail(function(){
+        alert("Query failed")
+      })
+    }
+    function build_pokedex(id){
+      $( "#poke_name" ).text(poke_data.name);
+      $( "#pokedex_image" ).attr("src", poke_url_base + id + ".png")
+      $( "#poke_height").text(poke_data.height);
+      $( "#poke_weight" ).text(poke_data.weight);
+      load_types()
+    }
+
+    function load_types(){
+      var html_type_list = ""
+      for (var i = 0; i < poke_data.types.length; i++){
+        html_type_list += "<li>" + poke_data.types[i].name + "</li>"
+      }
+      $( "#poke_type" ).html(html_type_list)
+    }
+
+    function clear_pokedex(){
+      $( "#pokedex_image" ).attr("src", "img/spinning_pokeball.gif")
+      $( "#poke_name" ).text("Loading...")
+      $( "#poke_height" ).text("");
+      $( "#poke_weight" ).text("");
+      $( "#poke_type" ).html("");
+    }
+
+    $(document).ready(function(){
+      $( "#poke_img_container" ).html("<h4>Loading Pokemon!</h4>")
+      for(var i = 1; i< 1001; i++){
+        var base_img = "<img class=pokemon id=" + i + " src="
+        var poke_url = poke_url_base + i + ".png>"
+        all_pokemon_img = all_pokemon_img + base_img + poke_url
+      };
+      $( "#poke_img_container" ).html(all_pokemon_img)
+
+      $(document).on("click",".pokemon",function(){
+        var id = $(this).attr('id')
+        clear_pokedex()
+        query_poke_data(id)
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <div id="pokedex_container">
+        <div id="dex_header">
+          <div id="pokedex">
+            <h2 id="poke_name"></h2>
+            <img id="pokedex_image" src="" alt=poke_data.name>
+            <h4>Types</h4>
+            <ul id="poke_type">
+            </ul>
+            <h4>Height</h4>
+            <p id="poke_height"></p>
+            <h4>Weight</h4>
+            <p id="poke_weight"></p>
+          </div>
+        </div>
+      </div>
+      <div id="poke_img_container">
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,13 @@
+insert into books (title, author, created_at, updated_at)
+VALUES ("Persopolis", "Christopher Moore", NOW(), NOW())
+
+insert into books (title, author, created_at, updated_at)
+VALUES ("Persopolis", "Marjane Satrapi", NOW(), NOW())
+
+insert into favorites (book_id, user_id)
+VALUES ((SELECT id from books where title = "You Suck"), (SELECT id from users where first_name like "Amy"))
+
+update favorites SET created_at = NOW(), updated_at = NOW() WHERE id = 1;
+
+select CONCAT (u.first_name, " ", u.last_name) as "Name", b.title 
+from users u, books b join favorites f on (f.book_id = b.id) where f.user_id = u.id;

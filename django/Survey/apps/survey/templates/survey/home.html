@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Dojo Survey</title>
+       {% load staticfiles %}
+       <link rel="stylesheet" href="{% static 'survey/css/home_style.css' %}" media="screen" title="no title" charset="utf-8">
+    </head>
+    <body>
+      <div id="submission_box">
+        <div id="submission_titles">
+          <p>Your Name:</p>
+          <p>Dojo Location:</p>
+          <p>Favorite Language:</p>
+        </div>
+        <form id="user_info" action='/survey/process' method='post'>
+          {% csrf_token %}
+            <input type='text' name='name'><br>
+            <select name='location'>
+              <option value="San Jose">San Jose</option>
+              <option value="Bellevue">Bellevue</option>
+              <option value="Burbank">Burbank</option>
+              <option value="Chicago">Chicago</option>
+              <option value="Dallas">Dallas</option>
+              <option value="DC">DC</option>
+            </select><br>
+            <select name='language'>
+              <option value="Python">Python</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Haskell">Haskell</option>
+              <option value="C++">C++</option>
+              <option value="Matlab">Matlab</option>
+              <option value="Machine Language">Machine Language</option>
+            </select>
+        </form>
+        <p>Comment (optional):</p>
+        <textarea form="user_info" name="comment" rows="4" cols="50">Tell us something about yourself!</textarea>
+        <input form="user_info" type='submit' value='create user'>
+      </div>
+    </body>
+</html>

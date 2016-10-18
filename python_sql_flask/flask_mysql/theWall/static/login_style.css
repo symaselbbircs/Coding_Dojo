@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  margin-left: 400px;
+}
+
+#login_submit{
+  margin-left: 465px;
+  padding: 10px;
+  height: 80px;
+  width: 220px;
+  border: 2px solid black;
+}
+  #login_submit form{
+    padding: 2px;
+    display:table;
+  }
+  #login_submit label{
+    display: table-cell;
+    text-align:right;
+  }
+  #login_submit input{
+    margin-left: 5px;
+    margin-bottom: 2px;
+  }
+  #login_submit p{
+    display: table-row;
+  }
+
+.success{
+  margin: 10px;
+  width: 300px;
+  padding-left: 5px;
+  padding-bottom: 8px;
+  background-color: green;
+  color: black;
+  font-family: sans-serif;
+  border: 2px solid black;
+}
+
+.alert{
+  margin: 10px;
+  padding-left: 5px;
+  padding-bottom: 8px;
+  background-color: red;
+  color: white;
+  font-family: sans-serif;
+  border: 2px solid black;
+}
+
+.table_cell{
+  display: table-cell;
+}

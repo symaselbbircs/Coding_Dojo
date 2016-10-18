@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Accordion - Default functionality</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion();
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+  <script type="text/javascript">
+  function build_accordion(data){
+    // this should output an html string that we want to inject into our table
+    var html_data = "<h3>" + data[0]['value'] + " " + data[1]['value'] + "</h3><div><p>";
+    var tmp_data = "Email Address: " + data[2]['value'] + "<br>Contact Number: " + data[3]['value']
+    html_data += tmp_data
+    return html_data + "</p></div>"
+  }
+  $(document).ready(function(){
+    $('#user_form').submit(function(){
+      var data = $('#user_form').serializeArray()
+      var new_table_item = build_accordion(data)
+      $('#accordion').append(new_table_item)
+      $( "#accordion" ).accordion( "refresh" );
+      return false
+    });
+    $("#submit_btn").click(function(){
+      $('#user_form').submit();
+    });
+  });
+  </script>
+</head>
+<body>
+  <div id="submit_users">
+    <h2>Add Users to your Accordion!</h2>
+    <form id="user_form" action="add_user.php">
+      First Name: <input type="text" name="first_name"><br>
+      Last Name: <input type="text" name="last_name"><br>
+      Email: <input type="text" name="email"><br>
+      Contact #: <input type="text" name="contact"><br>
+    </form>
+    <input id="submit_btn" type="submit" value="Add To Accordion">
+  </div>
+  <div id="accordion"></div>
+  <div id="tabs">
+    <ul>
+      <li><a href="#tabs-1">This Part</a></li>
+      <li><a href="#tabs-2">Will Be a work in progress</a></li>
+      <li><a href="#tabs-3">Because </a></li>
+    </ul>
+    <div id="tabs-1">
+      <p>Oh hello.</p>
+    </div>
+    <div id="tabs-2">
+      <p>a little blank at the moment.</p>
+    </div>
+    <div id="tabs-3">
+      <p>Dynamically adding the accordion took a little bit of work.</p>
+    </div>
+  </div>
+
+
+</body>
+</html>

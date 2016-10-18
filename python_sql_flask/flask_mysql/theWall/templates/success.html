@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Hello {{session['name']}}!</title>
+  </head>
+  <body>
+    <h1>You are currently Logged in as {{ session['username'] }}</h1>
+    <form action="/logout" method="GET">
+      <input type="submit" value="Logout">
+    </form>
+  </body>
+</html>

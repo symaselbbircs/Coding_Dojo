@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>User Information</title>
+       	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='result_style.css')}}">
+    </head>
+    <body>
+      <div id="result_box">
+        <h3>Submitted Info:</h3>
+        <div id="result_titles">
+          <p>Name:</p>
+          <p>Dojo Location:</p>
+          <p>Favorite Language:</p>
+          <p>Comment:</p>
+        </div>
+        <div id="result_information">
+          <p>{{ info["name"] }}</p>
+          <p>{{ info["location"] }} </p>
+          <p>{{ info["language"] }} </p>
+          <p>{{ info["comment"] }}</p>
+        </div>
+      </div>
+      <form action="/">
+        <input type="submit" value="to main">
+      </form>
+    </body>
+</html>

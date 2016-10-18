@@ -1,0 +1,41 @@
+*{
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+div, img{
+  height: 25px;
+  width: 25px;
+}
+
+#main{
+  margin-left: 500px;
+  margin-top: 200px;
+  width: 610px;
+  height: 600px;
+}
+#game_board{
+  padding: 10px;
+  height: 600px;
+  width: 550px;
+}
+
+#score_board{
+  color: white;
+  width: inherit;
+  height: 100px;
+}
+
+.game_row{
+  width: 1000px;
+}
+
+.blank, .pacman, .coin, .ghost, .cherry{
+  background-color: black;
+  display: inline-block;
+}
+
+.wall{
+  background-color: blue;
+  display: inline-block;
+}

@@ -1,0 +1,228 @@
+/*CSS reset settings here*/
+*{
+ margin: 0px;
+ padding: 0px;
+ font-family: "Tahoma";
+}
+#background {
+  width: 970px;
+}
+#header {
+  height: 100px;
+  width: 970px;
+  background-color: white;
+}
+  #header h1{
+    margin-top: 20px;
+    display: inline-block;
+    vertical-align: top;
+    color:lightgrey;
+  }
+  #header h1 span{
+    color:blue;
+  }
+  #header img{
+    margin-top: 10px;
+  }
+  #header h2{
+    margin-top: 20px;
+    background-color: blue;
+    color: lightgrey;
+  }
+  #header span{
+    color:grey;
+  }
+  #header ul{
+    font-size: 14px;
+    padding-top: 1px;
+    padding-bottom: 5px;
+    background-color: rgb(224, 224, 224);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    vertical-align: top;
+    border: 1px solid darkgrey;
+    border-top: 0px;
+    margin-left: 225px;
+    display: inline-block;
+  }
+  #header li{
+    display: inline-block;
+    padding: 5px;
+    padding-top: 0;
+    margin: 0;
+    margin-right: 2px;
+  }
+  #header li:before{
+    content: " | "
+  }
+  #header li:first-child:before{
+    content: none;
+  }
+  #header button{
+    padding: 3px;
+    padding-top: 2px;
+    margin-top: 1px;
+    margin-left: 5px;
+    vertical-align: top;
+    background-color: blue;
+  }
+
+#side_content {
+  width: 250px;
+  height: 200px;
+  padding: 10px;
+  padding-left: 5px;
+  background-color: white;
+  display: inline-block;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+  #side_content h4{
+    color: blue;
+    margin-bottom: 5px;
+  }
+  #side_content a{
+    text-decoration: none;
+  }
+  #side_content h5{
+    color: orange;
+  }
+  #side_content p{
+    font-size: 12px;
+  }
+  #side_content button{
+    margin-top: 5px;
+    font-size: 20px;
+  }
+  #side_content hr{
+    margin-top: 10px;
+    height: 2px;
+    background-color: darkgrey;
+    color: darkgrey;
+  }
+  #side_content img{
+    height: inherit;
+    width: inherit;
+  }
+#ads {
+  width: 250px;
+  height: 200px;
+  padding: 10px 0;
+  margin-top: 10px;
+  margin-left: 0px;
+  display: inline-block;
+  background-color: white;
+  margin-bottom: -90px;
+}
+#content_header {
+  display: inline-block;
+  padding: 0;
+  width: 515px;
+  margin-top: 30px;
+  vertical-align: top;
+  margin-bottom: 10px;
+}
+#content_header p{
+  display: inline-block;
+  margin-top: 2px;
+  margin-right: 410px;
+  text-align: left;
+  vertical-align: top;
+  color: red;
+}
+#content-contact {
+  display:inline-block;
+  width: auto;
+  margin-top: 30px;
+  text-align: right;
+  font-size: 10px;
+}
+  #content-contact h3{
+    font-size: 20px;
+    color: blue;
+  }
+#content{
+  vertical-align: top;
+  display: inline-block;
+  width: 680px;
+  list-style-type: square;
+  list-style-position: inside;
+}
+  #content img{
+    vertical-align: top;
+  }
+  #content p{
+    color: black;
+  }
+  #content ul{
+    color: blue;
+    padding-left: 1em;
+  }
+  #content li{
+    text-indent: -16px;
+  }
+  #content span{
+    font-weight: bold;
+  }
+  #content hr{
+    margin-bottom: 5px;
+  }
+  #content h5{
+    margin-top: 15px;
+    color: blue;
+  }
+#content-ad{
+  border: 5px solid blue;
+}
+  #content-ad img{
+    display: inline-block;
+  }
+#content-ad-description{
+  width: 600px;
+  display: inline-block;
+}
+  #content-ad-description h3{
+    color: blue;
+    margin-bottom: 5px;
+  }
+  #content-ad-description button{
+    margin-top: 10px;
+  }
+  #content-ad-description p{
+    font-size: 14px;
+  }
+.text_centered {
+  text-align: center;
+}
+.orange-button{
+  width: 220px;
+  padding: 2px;
+  background-color: orange;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  color: white;
+  text-align: center;
+  display: block;
+}
+.green-button{
+  width: 200px;
+  padding: 2px;
+  background-color: green;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  color: white;
+  text-align: center;
+  display: block;
+}
+.blue-button{
+  width: 220px;
+  padding: 2px;
+  background-color: blue;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  display: block;
+}
+.gradientBW{
+  background-color: linear-gradient(#c4c4c4,#FFFFFF);
+}
