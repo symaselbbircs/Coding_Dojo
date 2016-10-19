@@ -4,5 +4,6 @@ from . import views as v
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
-    url(r'^$', v.show)
+    url(r'^turtles/(?P<color>\w*)$', v.show_turtles),
+    url(r'^$', v.index)
 ]
