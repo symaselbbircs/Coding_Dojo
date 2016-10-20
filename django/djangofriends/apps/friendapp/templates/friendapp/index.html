@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Friendships</title>
+  </head>
+  <body>
+    <h1> I've got some friends? </h1>
+    <ul>
+      <h4>All my friends</h4>
+      {% for user in users %}
+        <li>
+          {{user.first_name}} {{user.last_name}}
+        </li>
+      {% endfor %}
+    </ul>
+    <ul>
+      <h4>All my friends ordered by first name</h4>
+      {% for user in ordered_first %}
+        <li>
+          {{user.first_name}} {{user.last_name}}
+        </li>
+      {% endfor %}
+    </ul>
+    <ul>
+      <h4>All my friends ordered by reverse last name</h4>
+      {% for user in ordered_last %}
+        <li>
+          {{user.first_name}} {{user.last_name}}
+        </li>
+      {% endfor %}
+    </ul>
+    <ul>
+      <h4>??Has friends??</h4>
+      {% for user in from_friendship %}
+        <li>
+          {{user.user.first_name}} {{user.user.last_name}}
+        </li>
+      {% endfor %}
+    </ul>
+    <ul>
+      <h4>?? Is friend ??</h4>
+      {% for user in is_friend %}
+        <li>
+          {{user.user.first_name}} {{user.user.last_name}}
+        </li>
+      {% endfor %}
+    </ul>
+    <ul>
+      <h4>all friendships where user isnt 4,5, or 6</h4>
+      {% for user in is_not_query %}
+        <li>
+          {{user.user.first_name}} {{user.user.last_name}}
+        </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
