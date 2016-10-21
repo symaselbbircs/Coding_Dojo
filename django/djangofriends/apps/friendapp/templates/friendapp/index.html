@@ -31,15 +31,15 @@
       {% endfor %}
     </ul>
     <ul>
-      <h4>??Has friends??</h4>
+      <h4>{{from_friendship.0.user.first_name}} {{from_friendship.0.user.last_name}} Has friends:</h4>
       {% for user in from_friendship %}
         <li>
-          {{user.user.first_name}} {{user.user.last_name}}
+          {{user.friend.first_name}} {{user.friend.last_name}}
         </li>
       {% endfor %}
     </ul>
     <ul>
-      <h4>?? Is friend ??</h4>
+      <h4>These people consider {{is_friend.0.friend.first_name}} {{is_friend.0.friend.last_name}} as their friend:</h4>
       {% for user in is_friend %}
         <li>
           {{user.user.first_name}} {{user.user.last_name}}
@@ -50,7 +50,7 @@
       <h4>all friendships where user isnt 4,5, or 6</h4>
       {% for user in is_not_query %}
         <li>
-          {{user.user.first_name}} {{user.user.last_name}}
+          {{user.user.first_name}} {{user.user.last_name}} considers {{user.friend.first_name}} {{user.friend.last_name}} a friend
         </li>
       {% endfor %}
     </ul>
