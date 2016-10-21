@@ -7,6 +7,67 @@
   <body>
     <h1> I've got some friends? </h1>
     <ul>
+      <h4>All friendships (Problem #1)</h4>
+      {% for user in all_friendships_query %}
+        <li>
+          {{user.user.first_name}} {{user.user.last_name}} considers {{user.friend.first_name}} {{user.friend.last_name}} a friend
+        </li>
+      {% endfor %}
+    </ul>
+    <ul>
+      <h4>Any person named "{{mikes_friends.0.user.first_name}}"'s friend:</h4>
+      {% for user in mikes_friends %}
+        <li>
+          {{user.friend.first_name}} {{user.friend.last_name}}
+        </li>
+      {% endfor %}
+    </ul>
+    <ul>
+      <h4>Not Daniels friend:</h4>
+      {% for user in not_daniels_friends %}
+        <li>
+          {{user.0}}
+        </li>
+      {% endfor %}
+    </ul>
+    <ul>
+      <h4>Friends with id = 1 and with last_name = Hernandez</h4>
+      {% for user in hernandez %}
+        <li>
+          {{user.friend.first_name}} {{user.friend.last_name}}
+        </li>
+      {% endfor %}
+    </ul>
+    <ul>
+      <h4>AUsers with the friend_id = 2</h4>
+      {% for user in mikes_friends %}
+        <li>
+          {{user.friend.first_name}} {{user.friend.last_name}}
+        </li>
+      {% endfor %}
+    </ul>
+    {% for user in users  %}
+    <p>
+      {{user.first_name}} {{user.last_name}}
+      {% for friendship in user.usersfriend.all  %}
+        {% if  friendship.friend.id == 2 %}
+          <b>{{friendship.friend.first_name}}</b>
+        {% endif %}
+      {% endfor %}
+    </p>
+    {% endfor %}
+    <ul>
+      <h4>Friends with id = 1 and with last_name = Hernandez</h4>
+      {% for user in hernandez2 %}
+      <p>
+        {{user.first_name}} {{user.last_name}}
+        {% for friendship in user.usersfriend.all  %}
+            <b>{{friendship.friend.first_name}}</b>
+        {% endfor %}
+      </p>
+      {% endfor %}
+    </ul>
+    <!-- <ul>
       <h4>All my friends</h4>
       {% for user in users %}
         <li>
@@ -45,14 +106,6 @@
           {{user.user.first_name}} {{user.user.last_name}}
         </li>
       {% endfor %}
-    </ul>
-    <ul>
-      <h4>all friendships where user isnt 4,5, or 6</h4>
-      {% for user in is_not_query %}
-        <li>
-          {{user.user.first_name}} {{user.user.last_name}} considers {{user.friend.first_name}} {{user.friend.last_name}} a friend
-        </li>
-      {% endfor %}
-    </ul>
+    </ul> -->
   </body>
 </html>
