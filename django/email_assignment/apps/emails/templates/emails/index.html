@@ -13,7 +13,7 @@
             <p>Email {{ email }} is not valid!</p>
           </div>
           {% endif %}
-        <form action='/addemail' method="post">
+        <form action='{% url 'addemail' %}' method="post">
           {% csrf_token %}
           Email Address: <input type='text' name='email' value=''><br>
           <input type='submit' value='Add Email'>
