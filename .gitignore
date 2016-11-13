@@ -3,3 +3,5 @@ venv
 *.tar
 credential*
 djangoEnv
+learnings
+bower_components
