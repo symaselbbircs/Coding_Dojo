@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pokemon Battle!</title>
+    <script   src="http://code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+    <script>
+      var pokemon_number_limit = 152;
+      var winner = {name: "",
+                    damage: 0}
+
+      function renderCard(card, player_content){
+        player.addCard(card)
+        card_div.innerHTML = card_div.innerHTML + constructcard(card)
+        function constructcard(card){
+            var card_content = card.name + " with attack: " + card.attack + ", defense: " + card.defense + ", and hp: " + card.hp;
+            return player_content + " " + card_content + "</p>";
+        }
+      }
+      function calculateDamage(card,name){
+        var damage = (card.attack * .5 * card.defense) + card.hp;
+        if(damage > winner.damage){
+          winner.name = name;
+          winner.damage = damage;
+          win_div.innerHTML = winner.name;
+        }
+      }
+      function getNewCard(player){
+        var monster_id = Math.round(Math.random()*pokemon_number_limit),
+            card_content = "<p>" + player.name + " has a";
+        $.ajax({
+          method: 'get',
+          url: 'http://pokeapi.co/api/v1/pokemon/' + monster_id,
+          success: function(card){
+            renderCard(card, card_content)
+            calculateDamage(card, player.name)
+          }
+        })
+
+      };
+      $(document).ready(function(){
+        card_div = document.getElementById("cards");
+        win_div = document.getElementById("winner")
+        var player_names = ["Amy","Brian","Chris","Alice","Antha","Kelse","Alfred","Aki"];
+
+        for(var i = 0; i < player_names.length; i++ ){
+          getNewCard(game.addPlayer(player_names[i]));
+        };
+        console.log(game)
+      })
+    </script>
+  </head>
+  <body>
+    <div id="cards"></div>
+    <p>And the winner is: <span id="winner"></span></p>
+
+    </div>
+  </body>
+</html>
