@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dojo Query</title>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="./dojoQuery.js">
+
+    </script>
+    <script type="text/javascript">
+
+      $(document).ready(function(){
+        $Dojo("hello").hover(function(){console.log("The button was hovered on!")});
+        $Dojo("hello").click(function(){console.log("The button was clicked!")})
+      })
+    </script>
+  </head>
+  <body>
+    <p id="hello">Oh hey hi hello.</p>
+  </body>
+</html>
