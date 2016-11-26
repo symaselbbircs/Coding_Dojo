@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Button Fun!</title>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript">
+    var color_rgb;
+    var buttonHoverColor = function(hoverType,buttonObject){
+      if(hoverType === "in"){
+        buttonObject.css("background-color","green")
+      }
+      else if(hoverType === "out"){
+        if(color_rgb){
+          buttonObject.css("background-color",color_rgb);
+        }
+        else{
+          alert("Color not saved in hoveroutmethod")
+        }
+      }
+    }
+    var buttonClickColor = function(objectToChange){
+      if(objectToChange.css("background-color") === "rgb(0, 0, 255)" || objectToChange.css("background-color") === "rgb(0, 128, 0)"){
+        objectToChange.css("background-color","red");
+      }
+      else{
+        objectToChange.css("background-color","blue");
+      }
+    }
+    var addButtonLogic = function(keydown){
+      if(keydown == 13){
+        var $div = $('button[id^="button"]:last');
+        var num = parseInt( $div.prop("id").match(/\d+/g),10) + 1;
+        $("#buttons").append($div.clone().prop('id', 'button' + num))
+      }
+    }
+    $(document).ready(function(){
+
+      var color_holder;
+      $(document).on("click",".specialbutton",function(){
+        console.log("click!!")
+        buttonClickColor($(this))
+      });
+      $(document).on("mouseover",".specialbutton",function(){
+        color_rgb = $(this).css("background-color")
+        buttonHoverColor("in",$(this));
+      });
+      $(document).on("mouseleave",".specialbutton",function(){
+        buttonHoverColor("out", $(this));
+        color_rgb = undefined;
+      });
+      $(document).keydown(function(event){
+        addButtonLogic(event.which)
+      })
+    });
+    </script>
+    <style>
+      .specialbutton{
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="buttons">
+      <button id="button1" class="specialbutton">Oh hello.</button>
+    </div>
+  </body>
+</html>

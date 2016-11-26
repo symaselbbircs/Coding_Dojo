@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hunting Github</title>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript">
+    function addGitInfo(data){
+      var returnString = "Name: " + data.login;
+      $("#gitinfo").html(returnString);
+      console.log(data, 'data')
+    }
+    $(document).ready(function(){
+      $("#getgit").submit(function(){
+        $.get("https://api.github.com/users/"+$("input:first").val(), addGitInfo)
+        return false
+      });
+    })
+
+    </script>
+  </head>
+  <body>
+    <form id="getgit">
+      <input type="text" name="username" value="symaselbbircs">
+      <input type="submit" name="getgitbutton" value="get Git info">
+    </form>
+    <div id="gitinfo">
+    </div>
+  </body>
+</html>
