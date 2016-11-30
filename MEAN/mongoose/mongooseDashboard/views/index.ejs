@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Animals!</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="jquery.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1>Animals, their group types, and number in group.</h1>
+    <% for (row in animals) { %>
+      <div class="animals">
+        <h4><a href="/mongooses/<%= animals[row].id %>"><%= animals[row].animal %></a></h4>
+        <p><h6>Group type:</h6> <%= animals[row].pack_type %></p>
+        <p><h6>Number in Group:</h6> <%= animals[row].in_pack %></p>
+        <a href="/mongooses/edit/<%= animals[row].id %>">Edit</a>
+        <a href="/mongooses/destroy/<%= animals[row].id %>">Delete</a>
+      </div>
+      <% } %>
+      <a href="/mongooses/new">Add Animal!</a>
+  </body>
+</html>
