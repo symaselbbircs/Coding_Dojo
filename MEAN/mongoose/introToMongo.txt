@@ -1,0 +1,41 @@
+1. 	use ‘my_first_db’
+
+2. 	db.createCollection('students')
+
+3-4.	db.students.insert({name: 'Amy Meyers', home_state: 'California', lucky_number: 8, birthday: {month: 1, day: 25, year: 1988}})
+	db.students.insert({name: 'Adam Sane', home_state: 'Washington', lucky_number: 43, birthday: {month: 6, day: 17, year: 1970}})
+	db.students.insert({name: 'Beverly Hills', home_state: 'Alabama', lucky_number: 11, birthday: {month: 12, day: 1, year: 2000}})
+	db.students.insert({name: 'Mary Wang', home_state: 'Maine', lucky_number: 44, birthday: {month: 1, day: 1, year: 1990}})
+
+5.	db.students.find({})
+
+6. 	db.students.find({ $or: [{"home_state":"California"},{"home_state":"Washington"}]})
+
+7.	db.students.find({ $or: [{'lucky_number': { $gt: 3 }}, { 'lucky_number': { $lte: 10}  }, { 'lucky_number': { $gte: 1, $lte: 9  }  }  ]})
+
+8.	db.students.update({}, { $set:  { 'interests': ['coding', 'brunch', 'MongoDB']  }},false,true)
+
+9.	db.students.update({name: 'Amy Meyers'},{$push: {interests:'reading'} })
+	db.students.update({name: 'Mary Wang'},{$push: {interests:'golfing'} })
+	db.students.update({name: 'Adam Sane'},{$push: {interests:'Kayaking'} })
+	db.students.update({name: 'Beverly Hills'},{$push: {interests:'drinking tea'} })
+	
+10.	db.students.update({name: 'Beverly Hills'},{$push: {interests:'taxes'} })
+
+11.	db.students.update({name: 'Beverly Hills'},{$pop: {interests:'taxes'} })
+
+12.	db.students.remove({ 'home_state':{ $in:['California','Washington']  }  })
+
+13.	db.students.remove({'name': 'Mary Wang'})
+
+14.	db.students.remove({ 'lucky_number': {$gt: 5}  },1)
+
+15.	db.students.update({},{ $set:  {'number_of_belts':0}},{multi:true})
+
+16.	db.students.update({'home_state':'Washington'}, {$inc: {number_of_belts: 1}},{multi:true})
+
+17.	db.students.update({}, {$rename:{'number_of_belts':'belts_earned'  }},{multi:true})
+
+18.	db.students.update({}, {$unset: {lucky_number:1} }, {multi:true})
+
+19.	db.students.update({},{$set: {updated_on:new Date()}}, {multi:true})
