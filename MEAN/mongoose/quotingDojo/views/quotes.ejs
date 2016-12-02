@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>QuotingDojo</title>
+  </head>
+  <body>
+    <h1>Here are the awesome quotes!</h1>
+    <br>
+    <% for (row in quote) { %>
+    <p>"<%= quote[row].quote %>"</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<%= quote[row].name %> (<%= quote[row].created_at %>)</p>
+    <hr>
+    <% } %>
+  </body>
+</html>
