@@ -1,0 +1,18 @@
+<% for (var row = 0; row < post.length; row ++) { %>
+  <h4>Name: <%= post[row].name %></h4>
+  <h4>Message: <%= post[row].message %></h4>
+  <% for (var i = 0; i < post[row].comments.length; i++) { %>
+    <div class="comments">
+      <h5>Name: <%= post[row].comments[i].name %></h5>
+      <h5>Comment: <%= post[row].comments[i].comment %></h5>
+      <hr>
+    </div>
+    <% } %>
+    <form id="comment<%= i %>" class="c_message" method="post" action="/posts/<%= post[row].id %>#comment<%= i %>">
+      <p>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="text" name="name" value=""></p>
+      <p><span>Comment:</span>
+      <textarea name="comment" rows="8" cols="50"></textarea></p>
+      <input id='c_submit' type="submit" name="b_comment" value="Post comment">
+    </form>
+<% } %>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A Lil' Message Board!</title>
+    <script src="jquery.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    var position;
+
+    var scrollsave = function(callback){
+      position = $(window).scrollTop()
+      if (typeof(callback) === 'function'){
+        callback();
+      }
+    };
+
+    var refreshMessages = function(){
+      $("#messages").html("")
+      $.ajax({
+        method: 'get',
+        url: '/posts',
+        success: function(all_messages){
+          $("#messages").html(all_messages)
+          $(window).scrollTop(position);
+        },
+      });
+      return false
+    }
+    $(document).ready(function(){
+      scrollsave(refreshMessages);
+
+      $('#p_message').submit(function(e){
+        e.preventDefault();
+        console.log("in post message function")
+        $.ajax({
+          method: $(this).attr('method'),
+          url: $(this).attr('action'),
+          data: $("#p_message").serialize(),
+          dataType: 'text',
+          success: function(){
+            scrollsave(refreshMessages);
+          },
+          error: function(data){
+            console.log('failure:', data)
+            $("#messages").html(data.responseText)
+          },
+        });
+        return false
+      });
+
+
+      $(document).on('submit','.c_message',function(e){
+        e.preventDefault();
+
+        console.log("Sending post data to " + $(this).attr('action'))
+
+        $.ajax({
+          url: $(this).attr('action'),
+          method: $(this).attr('method'),
+          data: $(this).serialize(),
+          dataType: "text",
+          success: function(data){
+            scrollsave(refreshMessages);
+          },
+          error: function(data){
+            console.log('failure:', data)
+            $("#messages").html(data.responseText)
+          }
+        })
+        return false
+      });
+    })
+    </script>
+    <style media="screen">
+      *{
+        margin-bottom: 2px;
+        padding: 0;
+      }
+
+
+
+      #board{
+        margin-left: 2em;
+        }
+        #board input[type=submit]{
+          margin-top: -5px;
+          margin-bottom: 10px;
+        }
+        #board span{
+          vertical-align: top;
+        }
+
+      #c_submit{
+        margin-left: 300px;
+      }
+
+      #m_submit{
+        margin-left: 365px;
+      }
+
+      #main{
+        width: 500px;
+        }
+
+      #messages{
+        margin-left: 2em;
+        }
+
+      .comments{
+        margin-left: 2em;
+      }
+      textarea{
+        resize: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The Dojo Message Board</h1>
+    <hr>
+    <div id="main">
+      <div id="board">
+        <form id="p_message" action="/posts#p_message" method="post">
+          <p>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" name="name" ></p>
+          <p><span>Message:</span>
+          <textarea name="message" rows="8" cols="62"></textarea></p>
+          <input id="m_submit" type="submit" name="b_message" value="Post message">
+        </form>
+        <div id="messages"></div>
+      </div>
+    </div>
+  </body>
+</html>
