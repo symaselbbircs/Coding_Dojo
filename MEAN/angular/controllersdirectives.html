@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+  <head>
+    <meta charset="utf-8">
+    <title>Directives and Controllers Assignment</title>
+    <script src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript">
+      var app = angular.module('myApp', []);
+      var all_foods = []
+      app.controller('foodInput', function($scope){
+        this.foods = []
+        this.submitFood = function(){
+          all_foods.push($scope.myFood)
+          this.foods = all_foods
+          $scope.myFood = ""
+        }
+        this.filterMe = function(){
+          this.foods = []
+          if($scope.filterText === ''){
+            this.foods = all_foods
+          }
+          else{
+            for(var food = 0; food < all_foods.length; food++){
+              if(all_foods[food].startsWith($scope.filterText)){
+                this.foods.push(all_foods[food])
+              }
+            }
+          }
+        }
+      })
+    </script>
+    <style>
+    #foodOut{
+      display: inline-block;
+      vertical-align: top;
+      margin-top: -25px;
+      margin-left: 10px;
+    }
+    #foodIn{
+      display: inline-block;
+    }
+    textarea{
+      resize: none;
+    }
+    </style>
+  </head>
+  <body>
+    <div ng-controller='foodInput as fin'>
+      <div id="foodIn">
+        <form ng-submit="fin.submitFood()">
+          <input type="text" ng-model='myFood'>
+          <input type="submit" value="Add Food!">
+        </form>
+        <p>Currently typing: <span ng-if='myFood'>{{myFood}}</span></p>
+      </div>
+      <div id="foodOut">
+        <h2>Foods!</h2>
+        <textarea ng-model="filterText" ng-change="fin.filterMe()" rows="1" cols="10"></textarea>
+        <ul>
+          <li ng-repeat=" food in fin.foods">{{food}}</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
