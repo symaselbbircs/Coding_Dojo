@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>First angular app!</title>
+    <script src = "bower_components/angular/angular.js"></script>
+    <script type="text/javascript">
+      var app = angular.module('app', [])
+      console.log(app)
+      app.controller('aController', function($scope){
+        $scope.myName = "Amy";
+        $scope.myFavoriteLanguage = "Python";
+        $scope.myFavoriteJSLibrary = "express";
+      })
+    </script>
+  </head>
+  <body>
+    <div ng-controller = "aController">
+      <p>Name: {{ myName }}</p>
+      <p>Favorite Language: {{ myFavoriteLanguage }}</p>
+      <p>Favorite Javascript Library: {{ myFavoriteJSLibrary }}</p>
+    </div>
+  </body>
+</html>
