@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Products with a Factory!</title>
+    <link rel="stylesheet" href="static/css/index.css">
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="main.js"></script>
+    <script src="factory/products.js"></script>
+    <script src="controllers/products.js"></script>
+    <script src="controllers/orders.js"></script>
+    <style media="screen">
+
+    </style>
+  </head>
+  <body>
+    <div ng-controller="productController as pCtrl" id="main">
+      <form ng-submit="pCtrl.addProduct()">
+        Product Name: <input type="text" ng-model="newProduct.name">
+        Product Price: <input type="text" ng-model="newProduct.price">
+        <input type="submit" value="Add Product">
+      </form>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+        <tr ng-repeat=" product in pCtrl.product_view track by $index">
+          <td>{{product.name}}</td>
+          <td>{{product.price|moneyFilter}}</td>
+          <td><button type="button" ng-click="pCtrl.deleteProduct( $index )">Delete</button></td>
+        </tr>
+      </table>
+    </div>
+    <hr><br><br><br><br>
+    <div ng-controller="ordersController as oCtrl" >
+      <h2>Orders</h2><table>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Qty Available</th>
+          <th>Actions</th>
+        </tr>
+        <tr ng-repeat=" product in oCtrl.product_view track by $index">
+          <td>{{product.name}}</td>
+          <td>{{product.price|moneyFilter}}</td>
+          <td>{{product.qty}}</td>
+          <td><button ng-if="product.qty !='SOLD OUT!'" type="button" ng-click="oCtrl.buyProduct( $index )">Buy</button></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
