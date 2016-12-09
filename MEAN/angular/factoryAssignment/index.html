@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Products with a Factory!</title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="main.js">
+
+    </script>
+    <style media="screen">
+      *{
+        margin: 0;
+        padding: 0;
+      }
+          table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      button{
+        padding: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div ng-controller="productController as pCtrl" id="main">
+      <form ng-submit="pCtrl.addProduct()">
+        Product Name: <input type="text" ng-model="newProduct.name">
+        Product Price: <input type="text" ng-model="newProduct.price">
+        <input type="submit" value="Add Product">
+      </form>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+        <tr ng-repeat=" product in pCtrl.product_view track by $index">
+          <td>{{product.name}}</td>
+          <td>{{product.price|moneyFilter}}</td>
+          <td><button type="button" ng-click="pCtrl.deleteProduct( $index )">Delete</button></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
