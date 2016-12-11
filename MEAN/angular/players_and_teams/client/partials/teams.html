@@ -9,7 +9,7 @@
       <th>Actions</th>
     </tr>
     <tr ng-repeat=" team in tCtrl.get_teams() track by $index">
-      <td>{{team.name}}</td>
+      <td><a href="/{{team.name}}" ng-bind = 'team.name'></a></td>
       <td><button ng-click=tCtrl.delete($index)>Remove Team</button></td>
     </tr>
   </table>

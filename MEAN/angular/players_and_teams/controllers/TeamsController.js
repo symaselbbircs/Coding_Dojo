@@ -1,7 +1,7 @@
-var tCtrl = function(teamFactory, $scope){
-
+var tCtrl = function(teamFactory, $scope, $routeParams){
 
   this.get_teams = function(){
+    console.log($routeParams)
     return teamFactory.read()
   }
 
@@ -18,4 +18,4 @@ var tCtrl = function(teamFactory, $scope){
 }
 
 
-app.controller('TeamsController', ['teamFactory', '$scope', tCtrl])
+app.controller('TeamsController', ['teamFactory', '$scope', '$routeParams', tCtrl])

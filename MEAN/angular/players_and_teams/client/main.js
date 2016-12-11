@@ -17,6 +17,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       controller: 'AssociationsController',
       controllerAs: 'aCtrl'
     })
+    .when('/:teamname',{
+      templateUrl: 'partials/teams.html',
+      controller: 'TeamsController',
+      controllerAs: 'tCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });
