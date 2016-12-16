@@ -1,0 +1,24 @@
+<!DOCTYPE html ng-app="app">
+<html lang="en">
+<base href="/">
+<head>
+  <meta charset="UTF-8">
+  <script src='angular/angular.js'></script>
+  <script src='angular-route/angular-route.js'></script>
+  <script src='main.js'></script>
+  <script src="factory/userFactory.js"></script>
+  <script src="controllers/IndexController.js"></script>
+  <script src="controllers/EditController.js"></script>
+  <script src="controllers/NewController.js"></script>
+  <title>Document</title>
+</head>
+
+<body ng-app="app">
+  <a href="/index">Index</a> |
+  <a href="/new">New</a>
+  <div ng-view>
+  </div>
+
+</body>
+
+</html>
