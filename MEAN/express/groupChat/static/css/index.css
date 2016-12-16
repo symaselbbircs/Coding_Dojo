@@ -1,0 +1,52 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+#main{
+  margin-left: 200px;
+  }
+  #main h2{
+    margin-left: 120px;
+  }
+  #main p{
+    margin-bottom: 5px;
+  }
+
+#message_board{
+  background-color: rgb(207, 207, 207);
+  border: 1px solid black;
+  height: 400px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  overflow-x: hidden;
+  padding: 5px;
+  padding-left: 0;
+  width: 500px;
+  }
+
+#submit{
+  margin-left: 474px;
+  padding: 2px;
+}
+
+#text_box{
+  resize: none;
+  width: 505px;
+}
+
+.green{
+  color: green;
+  }
+
+.blue{
+  color: blue;
+  }
+
+.orange{
+  color: orange;
+  }
+
+.purple{
+  color: purple;
+  }

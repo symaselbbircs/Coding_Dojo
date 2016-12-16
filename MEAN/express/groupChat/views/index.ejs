@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chat Room!</title>
+    <link rel='stylesheet' type='text/css' href="css/index.css">
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script src="jquery/dist/jquery.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      var name;
+
+      function send_new_user(name,socket){
+        socket.emit('add_new_user', name)
+      }
+
+      $(document).ready(function(){
+        var socket = io(),
+            users = [];
+
+        name = prompt("Please enter your name","");
+        send_new_user(name,socket)
+
+        socket.on('add_user_to_chat', function(data){
+          users.push(data)
+          $("#message_board").append("<p class='green'> " + data.name + " has entered the chat!</p>")
+        })
+
+        socket.on('user_disconnected', function(data){
+          console.log()
+          for(user in users){
+            if(users[user]['id'] == data.id){
+              users.splice(user,1)
+            }
+          }
+          $("#message_board").append("<p class='orange'> " + data.name + " has left the chat.</p>")
+        })
+
+        socket.on('new_comment_added', function(data){
+          $("#message_board").append("<p> " + data.name + ": " + data.comment + "</p>")
+        })
+
+        $("#submit").on('click',function(){
+          socket.emit('add_comment', {id:socket.id, comment:$("#text_box").val()})
+          $("#text_box").val("");
+          $("#text_box").focus();
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <h2>Conversation Board</h2>
+      <div id="message_board">
+        <p>Welcome to the chat room!</p>
+      </div>
+      <textarea id="text_box" rows="5" cols="81"></textarea><br>
+      <button id="submit" name="submit_button">Send</button>
+    </div>
+  </body>
+</html>
