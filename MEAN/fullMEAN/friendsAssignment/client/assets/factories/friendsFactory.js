@@ -13,8 +13,11 @@ app.factory('friendsFactory', ['$http', function($http) {
         }
       });
     };
-    this.update = function(){ // what parameters do we need?
-      // Your code here
+    this.update = function(friend,callback){ // what parameters do we need?
+      console.log(friend)
+      $http.put(`/friends/${friend._id}`, friend).then(function(res){
+        callback(res)
+      });
     };
     this.index = function(callback){
       //call this method if you want to update or set the friends variable
@@ -26,17 +29,31 @@ app.factory('friendsFactory', ['$http', function($http) {
  //Note: this can be shortened to $http.get('/friends').then(callback);
  //But only if you only want to run the callback from the controller.
     };
-    this.delete = function(){// what parameters do we need?
-        // Your code here
+    this.delete = function(id,callback){// what parameters do we need?
+        $http.get(`/delete/${id}`).then(function(res){
+          callback(res.data)
+        })
     };
-    this.show = function(){// what parameters do we need?
-        // Your code here
+    this.show = function(id,callback){// what parameters do we need?
+      console.log("in show friendsFactory")
+        $http.get(`/friends/${id}`).then(function(friend){
+          if(typeof(callback) === 'function'){
+            console.log(friend.data)
+            callback(friend.data)
+          }
+        })
     };
     // Sometimes you might not want to make a DB call, and just get the information stored in the factory.
     this.getFriends = function(callback){
       callback(friends);
     };
-    this.getFriend = function(callback){
+    this.getFriend = function(id,callback){
+      console.log(friends)
+        for(i in friends){
+          if(friends[i]._id === id){
+            friend = friends[i]
+          }
+        }
         callback(friend);
     };
   }
