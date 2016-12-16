@@ -1,0 +1,22 @@
+<div ng-controller = 'newController'>
+  <div class="userCtrl" id="user_list">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Show</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+      <tr ng-repeat="friend in friends | filter:bdaysearch">
+        <td>{{ friend.first_name }} {{ friend.last_name }}</td>
+        <td><a href="/show/{{friend._id}}">show</a></td>
+        <td><a href="/edit/{{friend._id}}">edit</a></td>
+        <td><button type="button" ng-click="nCtrl.delete(friend._id)">delete</button></td>
+      </tr>
+    </table>
+  </div>
+  <div class="userCtrl" id = "search_bday">
+    <input type="text" ng-model="bdaysearch" placeholder="Filter: Birthday!">
+    <button type="button"><a href="/new">New Friend</a></button>
+  </div>
+</div>
