@@ -26,80 +26,9 @@ mongoose.model('Packs', PackSchema);
 
 var Animal = mongoose.model('Packs');
 
-app.get('/',function(req,res){
-  Animal.find({}, function(err, animals){
-    if(err){
-      console.log("couldn't retrieve from db!")
-    } else {
-      console.log("Heck yes, animals!")
-      console.log(animals)
-      res.render('index',{animals:animals})
-    }
-  });
-})
+var route_setter = require('./server/config/routes')
 
-app.get('/mongooses/new', function(req,res){
-  res.render('mongooseform')
-})
-
-app.get('/mongooses/:id', function(req,res){
-  Animal.find({_id:req.params.id}, function(err,animal){
-    if(err){
-      res.json({err:err})
-    } else{
-      console.log("Successful query for animal " + animal)
-      res.render('showmongoose', {animal:animal})
-    }
-  });
-})
-
-app.get('/mongooses/edit/:id', function(req,res){
-  Animal.find({_id:req.params.id}, function(err, animal){
-    if(err){
-      console.log("Couldn't delete!")
-      res.json({err:err})
-    } else {
-      res.render('editmongoose', {animal:animal})
-    }
-  });
-})
-
-app.post('/mongooses', function(req,res){
-  console.log(req.body)
-  var animal = new Animal({animal: req.body.animal, in_pack: req.body.in_pack, pack_type: req.body.pack_type});
-
-  animal.save(function(err){
-    if(err){
-      console.log("Could not write " + req.body + " to db.")
-    }
-    else{
-      console.log("Db write successful!")
-      res.redirect('/')
-    }
-  })
-})
-
-app.post('/mongooses/:id', function(req,res){
-  Animal.update({_id:req.params.id}, {animal: req.body.animal, in_pack: req.body.in_pack, pack_type: req.body.pack_type}, function(err){
-    if(err){
-      console.log("Could not edit id ", req.params.id)
-    } else{
-      console.log("update for id " + req.params.id + " successful!")
-      res.redirect('/')
-    }
-  });
-})
-
-app.post('/mongooses/destroy/:id', function(req,res){
-  Animal.remove({_id:req.params.id}, function(err){
-    if(err){
-      console.log("Could not remove record " + req.params.id)
-    } else {
-      console.log("Record removed!")
-      res.redirect('/')
-    }
-  })
-})
+route_setter(app)
 
 app.listen(port, function(){
   console.log(`Listening on port ${port}`)
