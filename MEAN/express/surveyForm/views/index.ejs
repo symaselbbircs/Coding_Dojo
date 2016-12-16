@@ -2,16 +2,38 @@
 <html>
     <head>
        <title>Dojo Survey</title>
-       	<link rel='stylesheet' type='text/css' href="css/index_style.css">
+     	<link rel='stylesheet' type='text/css' href="css/index_style.css">
+      <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+      <script src="jquery/dist/jquery.js" charset="utf-8"></script>
+      <script type="text/javascript">
+      $(document).ready(function(){
+        var socket = io();
+        $('#user_info').submit(function(e){
+          e.preventDefault();
+
+          var data = $(this).serializeArray();
+          socket.emit('post_form', data)
+        })
+
+        socket.on('updated_message', function(data){
+          $("#socket_box").html(data)
+        })
+        socket.on('random_number', function(number){
+          $("#socket_box").append("Your random number is : " + number)
+        })
+      });
+      </script>
     </head>
     <body>
+      <div id="socket_box">
+      </div>
       <div id="submission_box">
         <div id="submission_titles">
           <p>Your Name:</p>
           <p>Dojo Location:</p>
           <p>Favorite Language:</p>
         </div>
-        <form id="user_info" action='/result' method='post'>
+        <form id="user_info">
             <input type='text' name='name'><br>
             <select name='location'>
               <option value="San Jose">San Jose</option>

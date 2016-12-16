@@ -7,6 +7,8 @@ var app = express(),
 
 
 app.use(express.static(__dirname + "/static"));
+app.use(express.static(__dirname + '/bower_components'));
+
 app.use(bodyParse.urlencoded({extended:true}));
 app.use(session({secret:'Blarghy'}));
 
@@ -39,6 +41,18 @@ app.post('/result', function(req,res){
 
 
 
-app.listen(port, function(){
+var server = app.listen(port, function(){
   console.log(`Listening on ${port}`)
 })
+var io = require('socket.io').listen(server);
+
+io.sockets.on('connection', function(socket){
+  socket.on('post_form', function(data){
+    var result = "You've emitted the following information to the server:\n"
+    for (row in data) {
+      result += `${data[row]['name']}: ${data[row]['value']}\n`;
+    }
+    socket.emit('updated_message',result)
+    socket.emit('random_number', Math.random()*1000+1)
+  });
+});

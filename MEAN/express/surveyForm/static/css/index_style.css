@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+#socket_box{
+  background-color: green;
+  color: black;
+}
+
 #submission_box {
   margin: 50px;
   height: 200px;
