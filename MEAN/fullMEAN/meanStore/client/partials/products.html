@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="assets/css/products.css">
+<div id="main">
+  <div id="search_column">
+    <input ng-model="search_items" placeholder="search...">
+    <br><br><br>
+    <h3>Add a new product</h3>
+    <form ng-submit="pCtrl.addProduct(item)">
+      <p>Name:</p>
+      <input type="text" ng-model="item.name">
+      <p>Image (url):</p>
+      <input type="text" ng-model="item.url" value="http://">
+      <p>Description:</p>
+      <textarea ng-model="item.description" rows="5" cols="19"></textarea>
+      <p>Initial Quantity:</p>
+      <p><select ng-model="item.quantity">
+        <option ng-repeat = "i in pCtrl.getNumber(number) track by $index" value="{{$index}}">{{$index}}</option>
+      </select></p>
+      <input type="submit" value="Create">
+    </form>
+    <p class="error" ng-if="error">{{error}}</p>
+    <p class="success" ng-if="success">{{success}}</p>
+  </div>
+  <div id="all_items">
+    <div class="item" ng-repeat="product in products | filter:search_items">
+      <img src="{{product.url}}" alt="{{product.name}}">
+      <p>{{product.name }}</p>
+      <p>({{product.quantity}} items left)</p>
+    </div>
+  </div>
+</div>

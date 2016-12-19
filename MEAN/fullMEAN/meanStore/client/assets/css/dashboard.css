@@ -1,0 +1,16 @@
+#all_items{
+  height: 200px;
+}
+
+#feed{
+  display: inline-block;
+}
+
+#main{
+  width: 1200px;
+}
+
+#search_column{
+  vertical-align: top;
+  height:1000px;
+}

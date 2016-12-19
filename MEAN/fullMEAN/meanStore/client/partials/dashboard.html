@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="assets/css/products.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<div id="main">
+  <div id="search_column">
+    <input ng-model="search_items" placeholder="search...">
+  </div>
+  <div id = "feed">
+    <div id="all_items">
+      <div class="item" ng-repeat="product in products | filter:search_items | filter: greaterThan('quantity',0)  | limitTo: 3 ">
+        <img src="{{product.url}}" alt="{{product.name}}">
+        <p>{{product.name }}</p>
+        <p>({{product.quantity}} items left)</p>
+      </div>
+    </div>
+      <div class="feed" id="recent_order">
+        <h4>Recent Orders</h4>
+        <p ng-repeat="order in orders | orderBy: 'created_at':true | limitTo: 3">{{order.name}} purchased {{order.quantity}} cats on {{order.created_at | date:'MMMM dd, yyyy HH:mm'}}</p>
+      </div><br><br>
+      <div class="feed" id="recent_customers">
+        <h4>Recent Customers</h4>
+        <p ng-repeat= "customer in customers | orderBy: 'created_at':true | limitTo: 3">{{customer.name}} has joined the store on {{customer.created_at | date:'MMMM dd, yyyy HH:mm'}}</p>
+      </div>
+    </div>
+  </div>
+</div>
